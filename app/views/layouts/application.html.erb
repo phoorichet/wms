@@ -8,7 +8,11 @@
 </head>
 <body>
 
-<%= yield %>
+  <%= yield %>
+
+  <!-- PT:: ensure that Devise has flash  -->
+   <p class="notice"><%= notice %></p>
+   <p class="alert"><%= alert %></p>
 
 </body>
 </html>

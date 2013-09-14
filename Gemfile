@@ -36,3 +36,11 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+#
+
+# Cabin log
+gem 'cabin'
+
+# Devise for authentication
+gem 'devise'
+

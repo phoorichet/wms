@@ -1,6 +1,12 @@
 Wms::Application.routes.draw do
+  resources :users
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
+
+  # PT:: Ensure that devise gets mapped to some url
+  root :to => 'home#index' # This home#index needs to be changed
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
