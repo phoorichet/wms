@@ -1,3 +1,5 @@
+require "wms/parser/csv"
+
 class Storage < ActiveRecord::Base
   # attr_accessible :title, :body
   
@@ -10,5 +12,14 @@ class Storage < ActiveRecord::Base
 
   # Validation
   validates :rawlog, :attachment_presence => true
+
+  # PT:: Read, parse file
+  def parse
+    logger.info "-----------------Parser-----------------"
+    logger.info self.rawlog.path
+
+    parser = Wms::Parser::Csv.new(self.rawlog.path)
+    parser.run
+  end
 
 end

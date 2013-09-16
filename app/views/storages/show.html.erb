@@ -3,6 +3,7 @@
 <div>Name: <%= @storage.rawlog_file_name %></div>
 <div>Size: <%= @storage.rawlog_file_size %></div>
 <div><%= link_to "view file", @storage.rawlog.url %></div>
+<div><%= link_to "Parse the log", parse_storage_path(@storage) %></div>
 
 <%= link_to 'Edit', edit_storage_path(@storage) %> |
 <%= link_to 'Back', storages_path %>

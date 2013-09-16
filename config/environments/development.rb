@@ -37,4 +37,7 @@ Wms::Application.configure do
 
   # PT:: Devise default url
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # PT:: Initialize the global logger
+  Rails.logger = Logger.new(STDOUT)
 end

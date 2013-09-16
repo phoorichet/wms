@@ -11,7 +11,7 @@ Wms::Application.routes.draw do
   # PT:: Create storage resources
   resources :storages do
     member do
-
+      get 'parse'
     end
 
     collection do

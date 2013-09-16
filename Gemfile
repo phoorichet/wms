@@ -45,5 +45,5 @@ gem 'cabin'
 gem 'devise'
 
 # Paperclip for upload
-gem "paperclip", "~> 3.0"
+gem 'paperclip', '~> 3.0'
 
