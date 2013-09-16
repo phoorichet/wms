@@ -1,0 +1,29 @@
+<h1>Listing storages</h1>
+
+<table border="1">
+  <tr>
+    <th>filename</th>
+    <th>size</th>
+    <th>created_at</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @storages.each do |storage| %>
+  <tr>
+    <td><%= storage.rawlog_file_name %></td>
+    <td><%= storage.rawlog_file_size %></td>
+    <td><%= storage.created_at %></td>
+    <td><%= link_to 'Show', storage %></td>
+    <td><%= link_to 'Edit', edit_storage_path(storage) %></td>
+    <td><%= link_to 'Destroy', storage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<!--%= link_to 'New Storage', new_storage_path %-->
+
+<%= link_to 'Upload files', upload_storages_path %>

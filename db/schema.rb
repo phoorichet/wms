@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130914003631) do
+ActiveRecord::Schema.define(:version => 20130915030622) do
+
+  create_table "storages", :force => true do |t|
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "rawlog_file_name"
+    t.string   "rawlog_content_type"
+    t.integer  "rawlog_file_size"
+    t.datetime "rawlog_updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "storages", ["user_id"], :name => "index_storages_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

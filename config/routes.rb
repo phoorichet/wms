@@ -8,6 +8,21 @@ Wms::Application.routes.draw do
   # PT:: Ensure that devise gets mapped to some url
   root :to => 'static_pages#main'
 
+  # PT:: Create storage resources
+  resources :storages do
+    member do
+
+    end
+
+    collection do
+      get 'upload'
+    end
+  end
+
+  # PT:: Match upload to new method
+  # match '/storages/upload', to: 'storages#new'
+
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

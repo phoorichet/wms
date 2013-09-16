@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<div>Name: <%= @storage.rawlog_file_name %></div>
+<div>Size: <%= @storage.rawlog_file_size %></div>
+<div><%= link_to "view file", @storage.rawlog.url %></div>
+
+<%= link_to 'Edit', edit_storage_path(@storage) %> |
+<%= link_to 'Back', storages_path %>
