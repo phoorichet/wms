@@ -1,13 +1,18 @@
-Widget Management System
+Widget Management System (WMS)
 ========================
 
-### Prerequisites and Dependencies
+## Prerequisites and Dependencies
 Paperclip gem is used. Thus imagemagick is required
 ```
 brew install imagemagick
 ```
 
-### Installation
+## Installation
+For the first time installation, run the following command:
+```
+bundle install
+rake db:migrate
+```
 
 ## TODO
 1. Add Devise authentication gem -> Done!
@@ -16,6 +21,6 @@ brew install imagemagick
 
 ## Note
 
-## Links
+## Useful  Links
 1. [Devise](https://github.com/plataformatec/devise)
 2. [Paperclip](https://github.com/thoughtbot/paperclip)
