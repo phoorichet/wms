@@ -69,7 +69,11 @@ class WmsSystemParser
       # @logger.debug normlaized_json_obj
     elsif json_obj[0] == 'location'
       normlaized_json_obj['type'] = 'location'
+<<<<<<< HEAD
       normlaized_json_obj['timestamp'] = @current_time.advance(:seconds => index)
+=======
+      normlaized_json_obj['timestamp'] = Time.at(json_obj[2] / 1000.0)
+>>>>>>> b7ab849dc4f3fd36c1f142cad74102138924f5a1
       stop_at = json_obj.length - 1
       range = (4..stop_at)
       range.step(2).each do |i|
