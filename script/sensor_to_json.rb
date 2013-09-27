@@ -36,6 +36,10 @@ class WmsSensorParser
       # @logger.debug 
       write_db(normlaize_json_obj(line))
       total_lines += 1
+      if total_lines % 100000 == 0
+        @logger.debug total_lines
+      end
+
     end
     @logger.debug "Total line: %d" % total_lines
   end
@@ -57,7 +61,7 @@ class WmsSensorParser
   end
 
   def write_db(json_obj)
-    @logger.debug json_obj
+    # @logger.debug json_obj
     @rawdata.insert(json_obj)
     
   end
