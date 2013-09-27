@@ -1,0 +1,12 @@
+development:
+    server: localhost
+    database: dummy
+
+test:
+    server: localhost
+    database: dummy-test
+
+production:
+    server: localhost
+    database: dummy-production
+

@@ -1,4 +1,5 @@
 GEM
+  remote: http://gemcutter.org/
   remote: https://rubygems.org/
   specs:
     actionmailer (3.2.13)
@@ -31,6 +32,9 @@ GEM
     arel (3.0.2)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
+    bson (1.9.2)
+    bson_ext (1.9.2)
+      bson (~> 1.9.2)
     builder (3.0.4)
     cabin (0.6.1)
     climate_control (0.0.3)
@@ -63,6 +67,12 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.25)
+    mongo (1.9.2)
+      bson (~> 1.9.2)
+    mongo_mapper (0.12.0)
+      activemodel (~> 3.0)
+      activesupport (~> 3.0)
+      plucky (~> 0.5.2)
     multi_json (1.7.9)
     orm_adapter (0.4.0)
     paperclip (3.4.2)
@@ -71,6 +81,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
+    plucky (0.5.2)
+      mongo (~> 1.5)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -126,10 +138,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt-ruby (~> 3.1.2)
+  bson
+  bson_ext
   cabin
   coffee-rails (~> 3.2.1)
   devise
   jquery-rails
+  mongo_mapper
   paperclip (~> 3.0)
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)

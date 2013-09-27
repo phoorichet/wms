@@ -1,13 +1,23 @@
+source 'http://gemcutter.org'
 source 'https://rubygems.org'
 
+require 'rubygems'
+require 'mongo'
+
+
+
 gem 'rails', '3.2.13'
+gem 'bson'
+gem 'bson_ext'
+gem 'mongo_mapper'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
 
-
+gem 'mongo_mapper'
+gem "bcrypt-ruby", "~> 3.1.2"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -46,4 +56,6 @@ gem 'devise'
 
 # Paperclip for upload
 gem 'paperclip', '~> 3.0'
+
+
 
