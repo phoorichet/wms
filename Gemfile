@@ -38,12 +38,12 @@ gem 'jquery-rails'
 # gem 'debugger'
 #
 
-# Cabin log
-gem 'cabin'
-
 # Devise for authentication
 gem 'devise'
 
 # Paperclip for upload
 gem 'paperclip', '~> 3.0'
+
+# Elasticsearch plugin
+gem 'tire'
 
