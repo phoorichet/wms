@@ -8,6 +8,10 @@ Wms::Application.routes.draw do
   # PT:: Ensure that devise gets mapped to some url
   root :to => 'static_pages#main'
 
+  resources :mongostores do
+    get  'show'
+  end
+
   resources :projects do
     get 'show'
   end

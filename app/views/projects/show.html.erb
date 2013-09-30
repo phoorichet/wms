@@ -1,9 +1,14 @@
 <p>
   <% project = Project.find_by_name("kapil") %>
+  <% mong = MongoStore.find_by_type("wifi_accesspoint_info") %>
   <p>
     name is
   <%=
   project.name
+  %>
+  the type is
+  <%=
+    mong.type
   %>
   </p>
 
