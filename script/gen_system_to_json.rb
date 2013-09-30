@@ -45,7 +45,7 @@ class WmsSystemParser
         # @logger.info Time.at(json_obj[4])
 
         norm_json = self.normlaize_json_obj(json_obj, total_lines)
-        @logger.debug norm_json
+        # @logger.debug norm_json
         # self.write_db(norm_json)
 
         total_lines += 1
@@ -54,7 +54,7 @@ class WmsSystemParser
         end
       end
 
-      @logger.debug "Total line: %d" % total_lines
+      # @logger.debug "Total line: %d" % total_lines
 
     end # end while
 
@@ -83,7 +83,7 @@ class WmsSystemParser
 
 
   def write_db(json_obj)
-    @logger.debug json_obj
+    # @logger.debug json_obj
     @rawdata.insert(json_obj)
     
   end
@@ -97,8 +97,8 @@ end
 
 
 p = WmsSystemParser.new("../99000204231618_system_file.csv")
-p.run(100)
-p.read_db()
+p.run(1000000)
+# p.read_db()
 
 
 
