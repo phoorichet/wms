@@ -46,11 +46,15 @@ class WmsSystemParser
 
         norm_json = self.normlaize_json_obj(json_obj, total_lines)
         # @logger.debug norm_json
-        # self.write_db(norm_json)
+        self.write_db(norm_json)
 
         total_lines += 1
         if num_record == total_lines
           break
+        end
+
+        if total_lines % 10000 == 0
+          @logger.debug total_lines
         end
       end
 
