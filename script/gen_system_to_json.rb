@@ -58,7 +58,7 @@ class WmsSystemParser
         end
       end
 
-      @logger.debug "Total line: %d" % total_lines
+      # @logger.debug "Total line: %d" % total_lines
 
     end # end while
 
@@ -103,7 +103,7 @@ end
 
 p = WmsSystemParser.new("../99000204231618_system_file.csv")
 p.run(1000000)
-p.read_db()
+# p.read_db()
 
 
 
