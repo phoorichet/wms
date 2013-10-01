@@ -69,6 +69,7 @@ class WmsSystemParser
     if json_obj[0] == 'wifi_accesspoint_info' 
       normlaized_json_obj['type'] = 'wifi_accesspoint_info'
       normlaized_json_obj['timestamp'] = @current_time.advance(:seconds => index)
+      normlaized_json_obj['device_id'] = json_obj[3]
       normlaized_json_obj['wifi_list'] = json_obj[4]['list']
       # @logger.debug normlaized_json_obj
     elsif json_obj[0] == 'location'
