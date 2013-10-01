@@ -1,5 +1,8 @@
 Wms::Application.routes.draw do
 
+  resources :analytics
+
+
   devise_for :users
 
   # The priority is based upon order of creation:
