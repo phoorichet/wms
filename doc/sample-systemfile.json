@@ -1,0 +1,108 @@
+wifi_accesspoint_info,
+2013-09-06 16:28:28,
+1378510108349,
+99000204231618,
+{"list":
+  [
+    {"capacities":"[WPA-PSK-TKIP+CCMP][WPA2-PSK-TKIP+CCMP][ESS]","level":"-68","frequency":"2462","BSSID":"02:0c:42:e3:71:c1","SSID":"ME-Guest"},
+    {"capacities":"[WPA-PSK-CCMP][WPA2-PSK-CCMP][ESS]","level":"-68","frequency":"2462","BSSID":"d4:ca:6d:21:41:b7","SSID":"ME-Engineering"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-70","frequency":"2412","BSSID":"00:27:22:2c:d3:94","SSID":"ME-Extension"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-70","frequency":"5785","BSSID":"6c:f3:7f:b7:72:b0","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-72","frequency":"5200","BSSID":"6c:f3:7f:b7:70:f0","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-CCMP][WPS][ESS]","level":"-84","frequency":"2437","BSSID":"00:25:9c:48:4f:07","SSID":"Legolas"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-66","frequency":"5805","BSSID":"6c:f3:7f:be:b7:30","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[ESS]","level":"-79","frequency":"2412","BSSID":"00:24:6c:d0:ca:e3","SSID":"nasa-guest"},
+    {"capacities":"[WPA2-EAP-CCMP][ESS]","level":"-78","frequency":"2412","BSSID":"00:24:6c:d0:ca:e2","SSID":"nasa"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-47","frequency":"5240","BSSID":"6c:f3:7f:b7:65:30","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-75","frequency":"5745","BSSID":"6c:f3:7f:be:be:b0","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-82","frequency":"5180","BSSID":"6c:f3:7f:be:ba:30","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-87","frequency":"5220","BSSID":"6c:f3:7f:b7:68:50","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-70","frequency":"2412","BSSID":"6c:f3:7f:be:b7:20","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA-PSK-TKIP][WPA2-PSK-TKIP+CCMP][ESS]","level":"-89","frequency":"2412","BSSID":"00:19:e3:33:bd:0f","SSID":"m2mi_2063"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-85","frequency":"2437","BSSID":"6c:f3:7f:be:ba:20","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-56","frequency":"2437","BSSID":"6c:f3:7f:b7:65:20","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-72","frequency":"5805","BSSID":"6c:f3:7f:b7:72:f0","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-82","frequency":"2437","BSSID":"6c:f3:7f:be:be:a0","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-82","frequency":"2437","BSSID":"6c:f3:7f:b7:64:c0","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-86","frequency":"2462","BSSID":"6c:f3:7f:b7:68:40","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-90","frequency":"2412","BSSID":"6c:f3:7f:b7:67:00","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA-PSK-TKIP+CCMP][WPA2-PSK-TKIP+CCMP][ESS]","level":"-92","frequency":"2437","BSSID":"a0:f3:c1:6d:41:f5","SSID":"reQall"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-81","frequency":"5805","BSSID":"6c:f3:7f:b7:64:d0","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-82","frequency":"2412","BSSID":"6c:f3:7f:b7:72:e0","SSID":"CMU-SV-BLDG-19"},
+    {"capacities":"[WPA-PSK-TKIP][WPA2-PSK-CCMP][ESS]","level":"-95","frequency":"2437","BSSID":"00:26:42:20:2f:b0","SSID":"Intrinsyx"}
+  ]
+}
+
+location,
+2013-09-06 16:28:28,
+1378510108396,
+99000204231618,
+longitude,-122.0589917,
+latitude,37.4122654,
+speed,0.0,
+has_speed,false,
+altitude,0.0,
+has_altitude,false,
+bearing,0.0,
+has_bearing,false,
+accuracy,20.0,
+sattlelites,3
+
+
+
+
+
+Timestamp,Accelerometer X,Accelerometer Y,Accelerometer Z,Orientation Disabled,Orientation Disabled,Orientation Disabled,Compass Disabled,Compass Disabled,Compass Disabled,Gyro X,Gyro Y,Gyro Z,Temperature Not Supported,Light
+1378510104908,2.9614418,8.329728,4.0261774,0.0,0.0,0.0,0.0,0.0,0.0,0.002130529,0.0053263223,-0.05965481,0.0,4.0
+
+
+
+
+
+wifi_accesspoint_info,
+2013-09-06 16:29:57,
+1378510197219,
+99000204231618,
+{"list":
+    [
+        {"capacities":"[WPA-PSK-TKIP+CCMP][WPA2-PSK-TKIP+CCMP][ESS]","level":"-71","frequency":"2462","BSSID":"02:0c:42:e3:71:c1","SSID":"ME-Guest"},
+        {"capacities":"[WPA-PSK-CCMP][WPA2-PSK-CCMP][ESS]","level":"-70","frequency":"2462","BSSID":"d4:ca:6d:21:41:b7","SSID":"ME-Engineering"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-63","frequency":"2412","BSSID":"00:27:22:2c:d3:94","SSID":"ME-Extension"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-69","frequency":"5785","BSSID":"6c:f3:7f:b7:72:b0","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-PSK-CCMP][WPS][ESS]","level":"-78","frequency":"2437","BSSID":"00:25:9c:48:4f:07","SSID":"Legolas"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-65","frequency":"5805","BSSID":"6c:f3:7f:be:b7:30","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[ESS]","level":"-74","frequency":"2412","BSSID":"00:24:6c:d0:ca:e3","SSID":"nasa-guest"},
+        {"capacities":"[WPA2-EAP-CCMP][ESS]","level":"-71","frequency":"2412","BSSID":"00:24:6c:d0:ca:e2","SSID":"nasa"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-48","frequency":"5240","BSSID":"6c:f3:7f:b7:65:30","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-80","frequency":"5180","BSSID":"6c:f3:7f:be:ba:30","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-78","frequency":"5220","BSSID":"6c:f3:7f:b7:68:50","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-74","frequency":"5805","BSSID":"6c:f3:7f:b7:72:f0","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA-PSK-TKIP+CCMP][WPA2-PSK-TKIP+CCMP][ESS]","level":"-93","frequency":"2437","BSSID":"a0:f3:c1:6d:41:f5","SSID":"reQall"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-78","frequency":"5805","BSSID":"6c:f3:7f:b7:64:d0","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WEP][ESS]","level":"-92","frequency":"2412","BSSID":"00:02:2d:0e:59:09","SSID":"reQall backup"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-85","frequency":"5745","BSSID":"6c:f3:7f:b7:69:d0","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA-PSK-TKIP+CCMP][WPA2-PSK-TKIP+CCMP][ESS]","level":"-91","frequency":"2437","BSSID":"58:6d:8f:13:0b:1e","SSID":"Atlantis"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-84","frequency":"5200","BSSID":"6c:f3:7f:b7:67:b0","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA-PSK-TKIP][WPA2-PSK-TKIP+CCMP][ESS]","level":"-95","frequency":"2412","BSSID":"00:19:e3:33:bd:0f","SSID":"m2mi_2063"},
+        {"capacities":"[ESS]","level":"-95","frequency":"2437","BSSID":"58:6d:8f:13:0b:20","SSID":"Atlantis-guest"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-46","frequency":"2437","BSSID":"6c:f3:7f:b7:65:20","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-78","frequency":"5745","BSSID":"6c:f3:7f:be:be:b0","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-76","frequency":"2412","BSSID":"6c:f3:7f:b7:72:e0","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-86","frequency":"2462","BSSID":"6c:f3:7f:b7:68:40","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-70","frequency":"2412","BSSID":"6c:f3:7f:be:b7:20","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-78","frequency":"2412","BSSID":"6c:f3:7f:b7:72:a0","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-81","frequency":"2437","BSSID":"6c:f3:7f:be:be:a0","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-EAP-CCMP][ESS]","level":"-87","frequency":"5745","BSSID":"00:24:6c:d0:ca:f0","SSID":"nasa"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-83","frequency":"2437","BSSID":"6c:f3:7f:b7:64:c0","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA2-PSK-TKIP+CCMP][ESS]","level":"-88","frequency":"2462","BSSID":"6c:f3:7f:b7:70:e0","SSID":"CMU-SV-BLDG-19"},
+        {"capacities":"[WPA-PSK-TKIP+CCMP][WPA2-PSK-TKIP+CCMP][WPS][ESS]","level":"-95","frequency":"2427","BSSID":"68:1c:a2:00:79:c0","SSID":"ME-Google"}
+    ]
+}
+
+
+
+
+
+
+
+
