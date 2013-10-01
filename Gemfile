@@ -47,3 +47,6 @@ gem 'paperclip', '~> 3.0'
 # Elasticsearch plugin
 gem 'tire'
 
+# Mongoid 
+gem "mongoid", "~> 3.0.0"
+
