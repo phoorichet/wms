@@ -7,7 +7,7 @@ class Storage < ActiveRecord::Base
   belongs_to :user
 
   # PT:: paperclip attr_accessible
-  attr_accessible :rawlog
+  attr_accessible :rawlog, :storage_type
   has_attached_file :rawlog
 
   # Validation
@@ -21,5 +21,8 @@ class Storage < ActiveRecord::Base
     parser = Wms::Parser::Csv.new(self.rawlog.path)
     parser.run
   end
+
+
+
 
 end

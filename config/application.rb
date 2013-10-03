@@ -58,5 +58,12 @@ module Wms
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+
+    # Fix bug "error  mongoid [not found]" when generating migration. This 
+    # happens because Mongoid is used as default migration generator.
+    # Refer to: https://groups.google.com/forum/#!topic/mongoid/3yeKEduk0zE
+     config.generators do |g|
+      g.orm :active_record
+    end
   end
 end

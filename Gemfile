@@ -50,3 +50,7 @@ gem 'tire'
 # Mongoid 
 gem "mongoid", "~> 3.0.0"
 
+# Mongo for scripting
+gem 'mongo'
+gem 'bson_ext'
+

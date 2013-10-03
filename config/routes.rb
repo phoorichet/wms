@@ -1,5 +1,8 @@
 Wms::Application.routes.draw do
 
+  resources :data_records
+
+
   resources :analytics
 
 
