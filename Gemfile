@@ -46,4 +46,4 @@ gem 'paperclip', '~> 3.0'
 
 # Elasticsearch plugin
 gem 'tire'
-
+gem 'therubyracer'
