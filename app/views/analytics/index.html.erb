@@ -1,0 +1,25 @@
+<h1>Listing analytics</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Widget</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @analytics.each do |analytic| %>
+  <tr>
+    <td><%= analytic.user_id %></td>
+    <td><%= analytic.widget_id %></td>
+    <td><%= link_to 'Show', analytic %></td>
+    <td><%= link_to 'Edit', edit_analytic_path(analytic) %></td>
+    <td><%= link_to 'Destroy', analytic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Analytic', new_analytic_path %>

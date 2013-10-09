@@ -1,5 +1,8 @@
 Wms::Application.routes.draw do
 
+  resources :analytics
+
+
   resources :widgets
 
 
