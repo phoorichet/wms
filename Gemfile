@@ -54,3 +54,6 @@ gem "mongoid", "~> 3.0.0"
 gem 'mongo'
 gem 'bson_ext'
 
+# Settinglogin for managing configuration
+gem 'settingslogic'
+

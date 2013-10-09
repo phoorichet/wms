@@ -17,7 +17,7 @@
 
 
   <div class="type">
-    <%= select_tag "storage_type", options_for_select([ "wifi", "location", "sensor", "audio" ], "wifi")%>
+    <%= f.select :storage_type, options_for_select([ "wifi", "location", "sensor", "audio" ], "wifi")%>
   </div>
 
   <div class="actions">

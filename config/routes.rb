@@ -1,9 +1,9 @@
 Wms::Application.routes.draw do
 
-  resources :data_records
+  resources :widgets
 
 
-  resources :analytics
+  resources :events
 
 
   devise_for :users
@@ -17,11 +17,11 @@ Wms::Application.routes.draw do
   # PT:: Create storage resources
   resources :storages do
     member do
-      get 'parse'
+      get 'process'     # Do reading, parsing, recording data to database
     end
 
     collection do
-      get 'upload'
+      get 'upload'      # Upload files
     end
   end
 
