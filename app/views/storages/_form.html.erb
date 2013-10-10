@@ -15,6 +15,11 @@
     <%= f.file_field :rawlog %>
   </div>
 
+
+  <div class="type">
+    <%= f.select :storage_type, options_for_select([ "wifi", "location", "sensor", "audio" ], "wifi")%>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

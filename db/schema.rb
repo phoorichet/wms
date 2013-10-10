@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130923193115) do
+ActiveRecord::Schema.define(:version => 20131009220329) do
 
   create_table "analytics", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20130923193115) do
     t.integer  "rawlog_file_size"
     t.datetime "rawlog_updated_at"
     t.integer  "user_id"
+    t.string   "storage_type"
+    t.string   "status"
   end
 
   add_index "storages", ["user_id"], :name => "index_storages_on_user_id"
@@ -47,5 +49,21 @@ ActiveRecord::Schema.define(:version => 20130923193115) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "widgets", :force => true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "version"
+    t.string   "config_file_path"
+    t.string   "database"
+    t.string   "collection"
+    t.datetime "last_run_at"
+    t.integer  "run_interval"
+    t.boolean  "is_disable"
+    t.string   "url"
+    t.integer  "user_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
 
 end

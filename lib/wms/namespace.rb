@@ -1,4 +1,6 @@
 module Wms
-  module Parser; end
+  module Input; end
+  module Config; end
+  module Plugin; end
 
 end

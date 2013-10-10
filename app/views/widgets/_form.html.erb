@@ -1,0 +1,65 @@
+<%= form_for(@widget) do |f| %>
+  <% if @widget.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@widget.errors.count, "error") %> prohibited this widget from being saved:</h2>
+
+      <ul>
+      <% @widget.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :version %><br />
+    <%= f.text_field :version %>
+  </div>
+  <div class="field">
+    <%= f.label :config_file_path %><br />
+    <%= f.text_field :config_file_path %>
+  </div>
+  <div class="field">
+    <%= f.label :database %><br />
+    <%= f.text_field :database %>
+  </div>
+  <div class="field">
+    <%= f.label :collection %><br />
+    <%= f.text_field :collection %>
+  </div>
+  <div class="field">
+    <%= f.label :last_run_at %><br />
+    <%= f.datetime_select :last_run_at %>
+  </div>
+  <div class="field">
+    <%= f.label :run_interval %><br />
+    <%= f.number_field :run_interval %>
+  </div>
+  <div class="field">
+    <%= f.label :last_run_at %><br />
+    <%= f.datetime_select :last_run_at %>
+  </div>
+  <div class="field">
+    <%= f.label :is_disable %><br />
+    <%= f.check_box :is_disable %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

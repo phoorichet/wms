@@ -98,11 +98,11 @@ class StoragesController < ApplicationController
   end
 
   # Get /storage/:id/parse
-  def parse
+  def process
     @storage = current_user.storages.find(params[:id])
 
     # Parse a raw log associated with storage
-    @storage.parse if @storage
+    @storage.process if @storage
     
   end
 

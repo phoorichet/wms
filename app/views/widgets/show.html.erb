@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @widget.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @widget.description %>
+</p>
+
+<p>
+  <b>Version:</b>
+  <%= @widget.version %>
+</p>
+
+<p>
+  <b>Config file path:</b>
+  <%= @widget.config_file_path %>
+</p>
+
+<p>
+  <b>Database:</b>
+  <%= @widget.database %>
+</p>
+
+<p>
+  <b>Collection:</b>
+  <%= @widget.collection %>
+</p>
+
+<p>
+  <b>Last run at:</b>
+  <%= @widget.last_run_at %>
+</p>
+
+<p>
+  <b>Run interval:</b>
+  <%= @widget.run_interval %>
+</p>
+
+<p>
+  <b>Last run at:</b>
+  <%= @widget.last_run_at %>
+</p>
+
+<p>
+  <b>Is disable:</b>
+  <%= @widget.is_disable %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @widget.url %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @widget.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_widget_path(@widget) %> |
+<%= link_to 'Back', widgets_path %>

@@ -18,7 +18,7 @@ class AnalyticsControllerTest < ActionController::TestCase
 
   test "should create analytic" do
     assert_difference('Analytic.count') do
-      post :create, analytic: {  }
+      post :create, analytic: { user_id: @analytic.user_id, widget_id: @analytic.widget_id }
     end
 
     assert_redirected_to analytic_path(assigns(:analytic))
@@ -35,7 +35,7 @@ class AnalyticsControllerTest < ActionController::TestCase
   end
 
   test "should update analytic" do
-    put :update, id: @analytic, analytic: {  }
+    put :update, id: @analytic, analytic: { user_id: @analytic.user_id, widget_id: @analytic.widget_id }
     assert_redirected_to analytic_path(assigns(:analytic))
   end
 

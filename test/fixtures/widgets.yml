@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyString
+  version: MyString
+  config_file_path: MyString
+  database: MyString
+  collection: MyString
+  last_run_at: 2013-10-09 15:03:29
+  run_interval: 1
+  last_run_at: 2013-10-09 15:03:29
+  is_disable: false
+  url: MyString
+  user_id: 1
+
+two:
+  name: MyString
+  description: MyString
+  version: MyString
+  config_file_path: MyString
+  database: MyString
+  collection: MyString
+  last_run_at: 2013-10-09 15:03:29
+  run_interval: 1
+  last_run_at: 2013-10-09 15:03:29
+  is_disable: false
+  url: MyString
+  user_id: 1

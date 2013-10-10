@@ -47,3 +47,13 @@ gem 'paperclip', '~> 3.0'
 # Elasticsearch plugin
 gem 'tire'
 
+# Mongoid 
+gem "mongoid", "~> 3.0.0"
+
+# Mongo for scripting
+gem 'mongo'
+gem 'bson_ext'
+
+# Settinglogin for managing configuration
+gem 'settingslogic'
+

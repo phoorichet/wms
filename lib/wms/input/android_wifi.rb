@@ -1,9 +1,12 @@
 require 'wms/namespace'
-require 'wms/parser/base'
+require 'wms/input/base'
 require 'csv'
 
-class Wms::Parser::Csv #< Wms::Parser::Base
+class Wms::Parser::Csv < Wms::Parser::Base
   attr_accessor :csv_file_path, :logger
+
+
+
   #
   def initialize(csv_file_path)
     # super
@@ -11,11 +14,22 @@ class Wms::Parser::Csv #< Wms::Parser::Base
     @logger = Logger.new(STDOUT)
   end
 
+  # @override the base class
+  public
+  def register
+    
+  end
+
   def run
     # adding options to make data manipulation easy
     total_lines = 0
-    CSV.foreach( @csv_file_path, {:headers => true,
-                                  :header_converters => :symbol}) do |line|
+    CSV.foreach('my_file.csv', :headers => false) do |csv_obj|
+
+  puts csv_obj['Timestamp'] #prints first row value
+
+  puts csv_obj['Milliseconds'] #prints second row value
+
+
 
       @logger.debug line
       total_lines += 1

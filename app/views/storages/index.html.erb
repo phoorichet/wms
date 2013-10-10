@@ -4,6 +4,8 @@
   <tr>
     <th>filename</th>
     <th>size</th>
+    <th>type</th>
+    <th>status</th>
     <th>created_at</th>
     <th></th>
     <th></th>
@@ -14,6 +16,8 @@
   <tr>
     <td><%= storage.rawlog_file_name %></td>
     <td><%= storage.rawlog_file_size %></td>
+    <td><%= storage.storage_type %></td>
+    <td><%= storage.status %></td>
     <td><%= storage.created_at %></td>
     <td><%= link_to 'Show', storage %></td>
     <td><%= link_to 'Edit', edit_storage_path(storage) %></td>
