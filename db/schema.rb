@@ -13,11 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20131009220329) do
 
-  create_table "analytics", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "storages", :force => true do |t|
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false

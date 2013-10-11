@@ -51,6 +51,7 @@ class WidgetsController < ApplicationController
         format.json { render json: @widget.errors, status: :unprocessable_entity }
       end
     end
+    createAnalytic
   end
 
   # PUT /widgets/1
@@ -80,4 +81,27 @@ class WidgetsController < ApplicationController
       format.json { head :no_content }
     end
   end
+end
+
+# Create an Analytic Object when a new Widget Object is created
+# A new collection will be created and the name will be specified
+# by the collection attribute of Widget object
+# The field name and value are defined in the config file
+# specified by the config_file_path attribute of Widget object
+def createAnalytic
+  Analytic.with(collection: @widget.collection);
+  analytic = Analytic.new
+  # Need to be modified, need to get the current user id
+  analytic.user_id = 1 
+  analytic.widget_id = @widget.id
+
+  # Read the widget config file line by line
+  # Need to be modified, can use json file instead of txt file
+  file = File.new(File.expand_path(@widget.config_file_path), "r")
+  while(line = file.gets)
+    arr = line.split
+    analytic.write_attribute(arr[0], arr[1]);
+  end
+  file.close
+  analytic.save
 end
