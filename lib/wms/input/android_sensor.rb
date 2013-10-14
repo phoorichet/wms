@@ -2,10 +2,11 @@ require 'wms/namespace'
 require 'wms/input/base'
 require 'wms/config/mixin'
 require 'csv'
+require 'Time'
 
 class Wms::Input::AndroidSensor < Wms::Input::Base
   # Header must be defined
-  config :headers, :type => Array, :default => [
+  set_default :headers, :type => Array, :default => [
         :timestamp,
         :accelerometer_x,
         :accelerometer_y,
@@ -23,6 +24,9 @@ class Wms::Input::AndroidSensor < Wms::Input::Base
         :light
       ]
 
+  # Convert the field to numeric by default
+  set_default :converters, :type => Array, :default => [ :numeric ]
+
   attr_accessor :filepath, :headers
 
   public
@@ -30,20 +34,32 @@ class Wms::Input::AndroidSensor < Wms::Input::Base
     raise "#{self.class.name}: filepath required in options" unless options[:filepath]
     @filepath = options[:filepath]
     @headers = self.class.get_default(:headers)
+    @converters = self.class.get_default(:converters)
   end # def register
 
   # Read from csv file row by row. Callback function will be called when each 
   # row is done reading.
   public
-  def run(queue)
+  def run(&block)
     # adding options to make data manipulation easy
     total_lines = 0
     CSV.foreach( @filepath, { :headers => @headers, 
-                              :converters => [ :numeric ]
+                              :converters => @converters
                               }) do |line|
 
-      @logger.debug line
+      # @logger.debug line.to_hash
 
+      # Covert timestamp field from epoc time to Time object.
+      # Time object also include microsecond as the second arg.
+      data = line.to_hash
+
+      # Skip the first row
+      if total_lines != 0
+        data[:timestamp] = Time.at(data[:timestamp] / 1000, data[:timestamp] % 1000)
+        # Call the callback function with the hash as params
+        callback = block
+        callback.call(data)
+      end
 
       total_lines += 1
     end
