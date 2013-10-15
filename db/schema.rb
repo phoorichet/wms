@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131009220329) do
+ActiveRecord::Schema.define(:version => 20131015101344) do
 
   create_table "analytics", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20131009220329) do
     t.integer  "user_id"
     t.string   "storage_type"
     t.string   "status"
+    t.integer  "last_parsed_line"
   end
 
   add_index "storages", ["user_id"], :name => "index_storages_on_user_id"

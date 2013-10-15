@@ -7,7 +7,7 @@ class Wms::Input::Base < Wms::Plugin::Plugin
   attr_accessor :tags
 
   public
-  def initialize(params={})
+  def initialize(options={})
     super
     @threadable = false
     @tags ||= []
@@ -33,7 +33,7 @@ class Wms::Input::Base < Wms::Plugin::Plugin
   #
   # @required
   public
-  def run(queue)
+  def run(&block)
     raise "#{self.class}#run must be overidden"
   end
 

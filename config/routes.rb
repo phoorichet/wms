@@ -20,7 +20,7 @@ Wms::Application.routes.draw do
   # PT:: Create storage resources
   resources :storages do
     member do
-      get 'process'     # Do reading, parsing, recording data to database
+      get 'parse'     # Do reading, parsing, recording data to database
     end
 
     collection do
