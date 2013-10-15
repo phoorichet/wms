@@ -53,5 +53,23 @@ class Event
   validates_presence_of :user_id
   validates_presence_of :timestamp
   validates_presence_of :type
-  validates_presence_of :device_id
+  # TODO: device_id is missing for sensor file
+  # validates_presence_of :device_id
+
+
+  # Index
+  index({ timestamp: -1 }, { unique: false})
+  index({ user_id: 1 }, { unique: false})
+  index({ type: 1 }, { unique: false})
+  index({ device_id: 1 }, { unique: false})
+
+
+  # Scopes
+  scope :sensor, where(:type => 'sensor')
+  scope :wifi, where(:type => 'wifi_accesspoint_info')
+  scope :location, where(:type => 'location')
+  scope :audio, where(:type => 'audio')
+
+
+
 end

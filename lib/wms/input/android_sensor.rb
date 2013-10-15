@@ -55,10 +55,17 @@ class Wms::Input::AndroidSensor < Wms::Input::Base
 
       # Skip the first row
       if total_lines != 0
-        data[:timestamp] = Time.at(data[:timestamp] / 1000, data[:timestamp] % 1000)
-        # Call the callback function with the hash as params
-        callback = block
-        callback.call(data)
+        begin
+          data[:timestamp] = Time.at(data[:timestamp] / 1000, data[:timestamp] % 1000)
+          data[:type] = 'sensor'
+
+          # Call the callback function with the hash as params
+          callback = block
+          callback.call(data)
+        rescue Exception => e
+          @logger.error "ERROR #{self.class.name} while parsing #{e}"
+        end
+        
       end
 
       total_lines += 1

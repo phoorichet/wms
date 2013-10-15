@@ -100,7 +100,7 @@ class StoragesController < ApplicationController
   # Get /storage/:id/process
   def parse
     @storage = current_user.storages.find(params[:id])
-    @storage.process
+    @storage.parse
 
   end
 

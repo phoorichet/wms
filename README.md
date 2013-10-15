@@ -31,6 +31,10 @@ rails s
 ## Database
 
 ### MongoDB
+# Create index
+```
+rake db:mongoid:create_indexes
+```
 
 #### Installation
 Follow this instruction [MongoDB](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/)
