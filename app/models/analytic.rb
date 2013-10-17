@@ -1,3 +1,5 @@
 class Analytic
-  attr_accessible :user_id, :widget_id
+  include Mongoid::Document
+  field :user_id, type: Integer
+  field :widget_id, type: Integer
 end
