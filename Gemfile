@@ -57,3 +57,7 @@ gem 'bson_ext'
 # Settinglogin for managing configuration
 gem 'settingslogic'
 
+# Bootstrap 3
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails'
+

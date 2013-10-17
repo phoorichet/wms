@@ -1,4 +1,8 @@
 class WidgetsController < ApplicationController
+
+  # PT:: make sure that the user is authenticated.
+  before_filter :authenticate_user!
+
   # GET /widgets
   # GET /widgets.json
   def index
