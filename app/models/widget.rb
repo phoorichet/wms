@@ -1,5 +1,6 @@
 require 'wms/namespace'
 require 'wms/config/mixin'
+require 'rbconfig'
 
 class Widget < ActiveRecord::Base
   include Wms::Config::Mixin
@@ -49,17 +50,23 @@ class Widget < ActiveRecord::Base
   end
 
 
-  def run_widget
+  def run_widget(wid, wname, uid)
     # Read /widget/ for /widget/widget_name/
 
     # Read configuration by calling get_config() in main.rb
 
     # Call run() in main.rb
 
+    this_file = File.expand_path("widget/" + wname + "/main.rb")
+ 
+    ruby = File.join(Config::CONFIG['bindir'], Config::CONFIG['ruby_install_name'])
+    
+    data = `#{ruby} -r#{this_file} -e'get_data'`
 
-    data = main.run()
 
-    data
+    #data = main.run()
+
+    #create_analytics(data, wid, wname, uid)
   end
 
 end
