@@ -70,6 +70,9 @@ class Event
   scope :location, where(:type => 'location')
   scope :audio, where(:type => 'audio')
 
-
+  # Class methods
+  def self.get_50events()
+  
+  end
 
 end

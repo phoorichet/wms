@@ -12,4 +12,9 @@ class User < ActiveRecord::Base
   has_many :storages
 
   has_many :widgets
+
+  # Add events method as a getter because Event class is not inherited from ActiveRecord
+  def events
+    Event.where(:user_id => self.id).limit(20).sort(:timestamp => -1)
+  end
 end

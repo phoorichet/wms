@@ -1,8 +1,13 @@
 class EventsController < ApplicationController
+  
+  # PT:: make sure that the user is authenticated.
+  before_filter :authenticate_user!
+  
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    # Show only the first 50 events
+    @events = current_user.events #Event.all
 
     respond_to do |format|
       format.html # index.html.erb
