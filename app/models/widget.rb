@@ -8,7 +8,7 @@ class Widget < ActiveRecord::Base
                   :is_disable, :last_run_at, :name, :run_interval, 
                   :url, :user_id, :version
 
-
+  # testdfasdfasdfsd
   # Initialize the necessary settings
   def init
     

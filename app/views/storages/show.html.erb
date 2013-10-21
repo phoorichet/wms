@@ -1,11 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="panel panel-default">
+   <div class="panel-heading">
+     <h3 class="panel-title">
+       <%= link_to 'Storage', storages_path %> /  <%= @storage.rawlog_file_name %>
+     </h3>
+   </div> 
+  
+   <div class="panel-body">
 
-<div>Name: <%= @storage.rawlog_file_name %></div>
-<div>Size: <%= @storage.rawlog_file_size %></div>
-<div>Status: <%= @storage.status %></div>
-<div>Last_parsed_line: <%= @storage.last_parsed_line %></div>
-<div><%= link_to "view file", @storage.rawlog.url %></div>
-<div><%= link_to "Process the log", parse_storage_path(@storage) %></div>
+    <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_storage_path(@storage) %> |
-<%= link_to 'Back', storages_path %>
+    <div>Name: <%= @storage.rawlog_file_name %></div>
+    <div>Size: <%= number_to_human_size(@storage.rawlog_file_size, precision: 2) %></div>
+    <div>Status: <%= @storage.status %></div>
+    <div>Last_parsed_line: <%= @storage.last_parsed_line %></div>
+    <div>
+      <%= link_to "Download the file", @storage.rawlog.url, :class=> "btn btn-default" %>
+      <%= link_to "Process the log", parse_storage_path(@storage), :class=> "btn btn-default" %>
+    </div>
+
+    <%= link_to 'Edit', edit_storage_path(@storage) %> |
+    <%= link_to 'Back', storages_path %>
+
+  </div><!-- end div.panel -->
+</div><!-- end div.row-->
+

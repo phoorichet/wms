@@ -12,4 +12,14 @@
  *= require_tree .
  */
 /*$link-color: red;*/
+
 @import "twitter/bootstrap";
+
+.container-flash {
+  margin: 0 auto;
+  margin-top: 70px;
+  max-width: 300px;
+  .flash-msg {
+    max-width: 300px;
+  }
+}

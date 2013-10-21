@@ -16,3 +16,7 @@
 
 # Ignore all uploaded files
 /public/system/**
+
+# Rubymine config
+/.idea
+/.idea/**
