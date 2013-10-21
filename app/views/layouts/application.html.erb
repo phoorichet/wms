@@ -1,18 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Wms</title>
+  <title>WMS</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <%= render "layouts/header" %>
+  <div class="container-flash">
+    <% flash.each do |key, value| %>
+  <% case key.to_s %>
+  <% when "alert" %>
+    <div class="alert alert-danger flash-msg"><%= value %></div>
+  <% when "notice" %>
+    <div class="alert alert-success flash-msg"><%= value %></div>
+  <% else %>
+      <div class="alert alert-<%= key %> flash-msg"><%= value %></div>
+  <% end %>
+<% end %>
+</div>
+  
+  
+  
+  
+  
+  
+  
   <%= yield %>
-
-  <!-- PT:: ensure that Devise has flash  -->
-   <p class="notice"><%= notice %></p>
-   <p class="alert"><%= alert %></p>
 
 </body>
 </html>
