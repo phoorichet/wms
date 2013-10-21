@@ -6,7 +6,7 @@ class WidgetsController < ApplicationController
   # GET /widgets
   # GET /widgets.json
   def index
-    @widgets = Widget.all
+    @widgets = current_user.widgets.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +17,7 @@ class WidgetsController < ApplicationController
   # GET /widgets/1
   # GET /widgets/1.json
   def show
-    @widget = Widget.find(params[:id])
+    @widget = current_user.widgets.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,7 +28,7 @@ class WidgetsController < ApplicationController
   # GET /widgets/new
   # GET /widgets/new.json
   def new
-    @widget = Widget.new
+    @widget =  current_user.widgets.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,13 +38,13 @@ class WidgetsController < ApplicationController
 
   # GET /widgets/1/edit
   def edit
-    @widget = Widget.find(params[:id])
+    @widget =  current_user.widgets.find(params[:id])
   end
 
   # POST /widgets
   # POST /widgets.json
   def create
-    @widget = Widget.new(params[:widget])
+    @widget =  current_user.widgets.new(params[:widget])
 
     respond_to do |format|
       if @widget.save
@@ -60,7 +60,7 @@ class WidgetsController < ApplicationController
   # PUT /widgets/1
   # PUT /widgets/1.json
   def update
-    @widget = Widget.find(params[:id])
+    @widget =  current_user.widgets.find(params[:id])
 
     respond_to do |format|
       if @widget.update_attributes(params[:widget])
@@ -76,7 +76,7 @@ class WidgetsController < ApplicationController
   # DELETE /widgets/1
   # DELETE /widgets/1.json
   def destroy
-    @widget = Widget.find(params[:id])
+    @widget =  current_user.widgets.find(params[:id])
     @widget.destroy
 
     respond_to do |format|

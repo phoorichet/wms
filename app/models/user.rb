@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   
   # PT:: A mapping to storage
   has_many :storages
+
+  has_many :widgets
 end

@@ -4,12 +4,12 @@
 //   background-color: #eee;
 // }
 
-.form-signin {
+.form-signin, .form-signup {
   max-width: 330px;
   padding: 15px;
   margin: 0 auto;
 
-  .form-signin-heading {
+  .form-signin-heading, .form-signup-heading {
     margin-bottom: 10px;  
   }
   .checkbox {
