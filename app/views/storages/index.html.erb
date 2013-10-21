@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -20,7 +19,7 @@
       <% @storages.each do |storage| %>
         <tr>
           <td><%= link_to storage.rawlog_file_name, storage %></td>
-          <td><%= number_to_human_size(storage.rawlog_file_size, precision: 2)%></td>
+          <td><%= number_to_human_size(storage.rawlog_file_size, precision: 2) %></td>
           <td><%= storage.storage_type %></td>
           <td><%= storage.status %></td>
           <td><%= storage.created_at %></td>
