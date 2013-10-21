@@ -1,3 +1,4 @@
+require 'wms/namespace'
 require 'wms/config/mixin'
 
 class Widget < ActiveRecord::Base
@@ -13,37 +14,12 @@ class Widget < ActiveRecord::Base
     
   end
 
-  def create_analytics(data)
-    
-    # Create a record in MongoDB
-
-  end
-
-  def get_analytics
-    
-  end
-
-
-  def run_widget
-    # Read /widget/ for /widget/widget_name/
-
-    # Read configuration by calling get_config() in main.rb
-
-    # Call run() in main.rb
-
-
-    data = main.run()
-
-    data
-  end
-
-  
   # Create a new Analytic object and save it into mongodb
   # @param {Hash} data Analytic data
   # @param {Integer} wid Widget id
   # @param {String} wname Widget name
   # @param {Integer} uid User id
-  def create_analytic(data, wid, wname, uid)
+  def create_analytics(data, wid, wname, uid)
     config = source("widget/" + wname + "/config.yml")
     attr_name = config[:development][:attributes]
     
@@ -61,7 +37,26 @@ class Widget < ActiveRecord::Base
     analytic.save
   end
 
-  def get_analytic
-
+  # Get all the analytics records of one widget
+  # @param {Integer} wid Widget id
+  # @return {Array} analytics Array of Analytic objects
+  def get_analytics(wid)
+    analytics = Analytic.where(widget_id: wid)
+    return analytics
   end
+
+
+  def run_widget
+    # Read /widget/ for /widget/widget_name/
+
+    # Read configuration by calling get_config() in main.rb
+
+    # Call run() in main.rb
+
+
+    data = main.run()
+
+    data
+  end
+
 end
