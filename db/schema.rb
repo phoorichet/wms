@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131015231317) do
+ActiveRecord::Schema.define(:version => 20131021215011) do
 
   create_table "storages", :force => true do |t|
     t.datetime "created_at",                         :null => false
@@ -63,5 +63,7 @@ ActiveRecord::Schema.define(:version => 20131015231317) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  add_index "widgets", ["user_id"], :name => "index_widgets_on_user_id"
 
 end
