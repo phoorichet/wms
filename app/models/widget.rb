@@ -1,6 +1,7 @@
 require 'wms/namespace'
 require 'wms/config/mixin'
-require 'rbconfig'
+#require 'rbconfig'
+require 'wms/widget'
 
 class Widget < ActiveRecord::Base
   include Wms::Config::Mixin
@@ -53,6 +54,7 @@ class Widget < ActiveRecord::Base
     # Read configuration by calling get_config() in main.rb
 
     # Call run() in main.rb
+
 
     this_file = File.expand_path("widget/" + wname + "/main.rb")
  
