@@ -1,21 +1,17 @@
 require 'wms/plugin/plugin'
 require 'wms/config/mixin'
+require 'wms/api/event'
 
 class Wms::Widget::Base < Wms::Plugin::Plugin
   include Wms::Config::Mixin
-
   attr_accessor :tags
 
-  private
-  attr_accessor :events, :analytics
 
   public
   def initialize(options={})
     super
     @threadable = false
     @tags ||= []
-    @events = Event
-    @analytics = Analytic
 
     @logger = Logger.new(STDOUT)
 

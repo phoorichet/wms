@@ -1,16 +1,16 @@
 module Wms::Api::Event
   
-  private
-  attr_accessor :event
+  #private
+  #attr_accessor :event
 
   def self.included(base)
-    @event = Event
-    
     base.extend(Wms::Api::Event::ClassMethod)
   end
 
-  def events
-    self
+  def events(&block)
+    Event.all.each do |d|
+      block.call(d.attributes)
+    end
   end
 
   module ClassMethod
