@@ -6,11 +6,16 @@ class Wms::Widget::Base < Wms::Plugin::Plugin
 
   attr_accessor :tags
 
+  private
+  attr_accessor :events, :analytics
+
   public
   def initialize(options={})
     super
     @threadable = false
     @tags ||= []
+    @events = Event
+    @analytics = Analytic
 
     @logger = Logger.new(STDOUT)
 
@@ -23,7 +28,7 @@ class Wms::Widget::Base < Wms::Plugin::Plugin
   #
   # @required
   public
-  def self.register(options={})
+  def register(options={})
     raise "#{self.class}#register must be overidden"
   end # def register
 
@@ -33,7 +38,7 @@ class Wms::Widget::Base < Wms::Plugin::Plugin
   #
   # @required
   public
-  def self.run
+  def run
     raise "#{self.class}#run must be overidden"
   end
 
@@ -42,5 +47,6 @@ class Wms::Widget::Base < Wms::Plugin::Plugin
   def tag(newtag)
     @tags << newtag
   end # def tag
+
 
 end

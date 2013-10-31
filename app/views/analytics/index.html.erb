@@ -4,6 +4,7 @@
   <tr>
     <th>User</th>
     <th>Widget</th>
+    <th>id</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,7 @@
   <tr>
     <td><%= analytic.user_id %></td>
     <td><%= analytic.widget_id %></td>
+    <td><%= analytic.id %></td>
     <td><%= link_to 'Show', analytic %></td>
     <td><%= link_to 'Edit', edit_analytic_path(analytic) %></td>
     <td><%= link_to 'Destroy', analytic, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -40,10 +40,10 @@ class Widget < ActiveRecord::Base
     self.all.each do |widget|
       begin
         # Convert class name as a string to a ruby class
-        widget_class = "Wms::Widget::#{widget.name}"
-        widget = widget_class.constantize
-        puts widget
-        widget.run 
+        widget_class_str = "Wms::Widget::#{widget.name}"
+        widget_class = widget_class_str.constantize
+        widget_instance = widget_class.new
+        widget_instance.run
       rescue Error => e
         puts "Error!!" 
       end

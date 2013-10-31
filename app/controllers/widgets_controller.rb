@@ -84,4 +84,9 @@ class WidgetsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def run
+    Widget.load_widgets
+    Widget.run_widgets
+  end
 end
