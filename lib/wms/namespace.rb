@@ -3,5 +3,5 @@ module Wms
   module Config; end
   module Plugin; end
   module Widget; end
-
+  module Api; end
 end

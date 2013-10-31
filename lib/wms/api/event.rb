@@ -4,13 +4,11 @@ module Wms::Api::Event
   attr_accessor :event
 
   def self.included(base)
-    @event = Event
-    
     base.extend(Wms::Api::Event::ClassMethod)
   end
 
   def events
-    self
+    self.event.first
   end
 
   module ClassMethod

@@ -1,6 +1,9 @@
 require 'wms/widget/base'
 
 class Wms::Widget::Widget1 < Wms::Widget::Base
+  include Wms::Api::Event
+  
+  
   def initialize
     super
     puts "Init widget1"
@@ -14,6 +17,12 @@ class Wms::Widget::Widget1 < Wms::Widget::Base
   # @override 
   def run
     # Call api
+    
+    puts events
+    
+    
+    
+    ''' 
     puts "Run..." 
     puts 
     event = self.events
@@ -29,7 +38,7 @@ class Wms::Widget::Widget1 < Wms::Widget::Base
     #puts event.accelerometer_x = 1.0
     #event.save
     #puts @events.first.to_json
-
+    '''
   end
 
   def save(data)
