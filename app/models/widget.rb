@@ -1,7 +1,7 @@
 require 'wms/namespace'
 require 'wms/config/mixin'
-#require 'rbconfig'
-require 'wms/widget'
+require 'wms/error'
+require 'rbconfig'
 
 class Widget < ActiveRecord::Base
   include Wms::Config::Mixin
@@ -17,6 +17,37 @@ class Widget < ActiveRecord::Base
   # Initialize the necessary settings
   def init
     
+  end
+
+  # This method will list all the widgets that were installed.
+  # The method looks up for type
+  def self.load_widgets
+    self.all.each do |widget|
+      begin
+        # Use the fixed path right now.
+        main_path = "wms/widget/#{widget.name}/main"
+        logger.debug("Loading widget [#{widget.name} from #{main_path}")
+      
+        require main_path
+      rescue LoadError => e
+        raise Wms::PluginLoadingError
+      end # end begin
+    end # end each
+  end
+
+  # This method will retrive widget classes and  call run method on them
+  def self.run_widgets
+    self.all.each do |widget|
+      begin
+        # Convert class name as a string to a ruby class
+        widget_class_str = "Wms::Widget::#{widget.name}"
+        widget_class = widget_class_str.constantize
+        widget_instance = widget_class.new
+        widget_instance.run
+      rescue Error => e
+        puts "Error!!" 
+      end
+    end
   end
 
   # Create a new Analytic object and save it into mongodb

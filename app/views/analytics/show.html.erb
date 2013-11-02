@@ -9,6 +9,13 @@
   <b>Widget:</b>
   <%= @analytic.widget_id %>
 </p>
+<p>
+  <b>Data:</b>
+  <pre>
+  <%= @analytic.to_json %>
+  </pre>
+</p>
+
 
 
 <%= link_to 'Edit', edit_analytic_path(@analytic) %> |

@@ -3,7 +3,11 @@ Wms::Application.routes.draw do
   resources :analytics
 
 
-  resources :widgets
+  resources :widgets do
+    collection do
+      get 'run'
+    end
+  end
 
 
   resources :events
