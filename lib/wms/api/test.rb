@@ -1,8 +1,12 @@
 require "wms/namespace"
 require "wms/api/event"
+require "wms/api/analytic"
+require "wms/config/mixin"
 
 class Wms::Api::Test
   include Wms::Api::Event
+  include Wms::Api::Analytic
+  include Wms::Config::Mixin
 
   def print_something(*args)
     puts args
@@ -21,7 +25,18 @@ class Wms::Api::Test
     events do |event|
       print_something(event)
     end
+  end
 
+  def test_save_analytics
+    data = {"attr1" => "data1", "attr2" => "data2", "attr3" => "data3"}
+    save_analytics(data, 5, "widget1", 6)
+  end
+
+  def test_get_analytics
+    analytics = get_analytics(1)
+    analytics.each do |analytic|
+      puts analytic
+    end
   end
 
 end
