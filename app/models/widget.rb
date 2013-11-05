@@ -89,6 +89,7 @@ class Widget < ActiveRecord::Base
 
     # Call run() in main.rb
 
+
     this_file = File.expand_path("widget/" + wname + "/main.rb")
  
     ruby = File.join(Config::CONFIG['bindir'], Config::CONFIG['ruby_install_name'])

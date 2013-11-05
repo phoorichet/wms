@@ -3,10 +3,9 @@ require 'wms/widget/base'
 class Wms::Widget::Widget1 < Wms::Widget::Base
   include Wms::Api::Event
   
-  
   def initialize
     super
-    puts "Init widget1"
+    @logger.debug "Init widget [#{self.class.name}]"
   end
 
   # @override
@@ -17,10 +16,11 @@ class Wms::Widget::Widget1 < Wms::Widget::Base
   # @override 
   def run
     # Call api
-    
-    puts events
-    
-    
+    @logger.debug "Running widget [#{self.class.name}]" 
+
+    @events.wifi.where(:device_id => "99000204231618").each do |event|
+
+    end
     
     ''' 
     puts "Run..." 
