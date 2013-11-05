@@ -7,8 +7,11 @@ require 'net/http'
 include FileUtils
 require 'open-uri'
 
+# Dir.mkdir(File.join(Dir.home, "/VirtualBox/"), 0777)
+cd File.expand_path("~/VirtualBox/")
+path = Pathname.new('.')
 
-#download VirtualBox
+# #download VirtualBox
 # Net::HTTP.start("dlc.sun.com.edgesuite.net") do |http|
 #   begin
 #     file = open("VirtualBox-4.2.18-88780-OSX.dmg", 'wb')
@@ -21,12 +24,9 @@ require 'open-uri'
 #   end
 # end
 
-#go to downloads directory
+# puts `ls -lrt`
+
 puts "Installing most recent .dmg"
-
-cd File.expand_path("~/GitHubCode/vm_wms/")
-path = Pathname.new('.')
-
 #find most recent .dmg file
 files = path.entries.collect { |file| path+file }.sort { |file1,file2| file1.ctime <=> file2.ctime }
 files.reject! { |file| ((file.file? and file.to_s.include?(".dmg")) ? false : true) }
@@ -42,73 +42,71 @@ end
 
 puts "Mounting #{last_dmg}"
 
-mount_point = Pathname.new "~/GitHubCode/vm_wms/"
+mount_point = Pathname.new "~/VirtualBox/"
 puts "Mount Point: #{mount_point}\n"
 puts "Last DMG: #{last_dmg}\n"
 
-result = `hdiutil attach -mountpoint #{mount_point} #{last_dmg}`
-puts "#{result}"
+puts `hdiutil attach -mountpoint #{mount_point} #{last_dmg}`
+
 
 #find any apps in the mounted dmg
-   r = `sudo installer -pkg ~/GitHubCode/vm_wms/VirtualBox.pkg -target /` 
-   puts "#{r}"
+puts `sudo installer -pkg ~/VirtualBox/VirtualBox.pkg -target /`
+   
 
 #unmount the .dmg
 puts "Unmounting #{last_dmg}"
-puts Dir.pwd
-Dir.chdir(".")
-puts Dir.pwd
-# result = `hdiutil detach #{mount_point}/#{last_dmg}`
+puts `hdiutil detach #{mount_point}/#{last_dmg}`
 puts "Finished installing #{last_dmg}"
 
-#delete the .dmg
-#rm last_dmg
+
+
+# delete the .dmg
+Dir.chdir(".")
+puts `sudo rm -rf ~/VirtualBox/`
+
+#go to downloads directory
+puts Dir.pwd
+Dir.chdir(".")
+Dir.mkdir(File.join(Dir.home, "/cisco-ini-project/"), 0777)
+cd File.expand_path("~/cisco-ini-project/")
+path = Pathname.new('.')
 
 #Opening VirtualBox 
-`open /Applications/VirtualBox.app`
-
-#Installing vagrant gem
- out = `sudo gem install vagrant`
- puts "#{out}"
-
-#Adding lucid64 box
-`vagrant box add lucid64 http://files.vagrantup.com/lucid64.box`
-
-`ls -lrt`
+open_VB = `open /Applications/VirtualBox.app`
+puts "#{open_VB}"
 
 # #Create a new git repo
-# `git clone https://github.com/phoorichet/wms.git`
+create_repo = `git clone https://github.com/phoorichet/wms.git`
+puts "#{create_repo}"
 
 # #Change to directory wms
-# `cd wms`
+goto_wms = Dir.chdir("wms/")
+Dir.mkdir(File.join(Dir.home, "/cisco-ini-project/data"), 0777)
 
-# #Start lucid64 box
-# `sudo vagrant init lucid64`
+puts "Into wms now!"
+puts `ls -lrt`
 
-# #Up the vagrant box
-# `sudo vagrant up`
 
-# #ssh the box
-# `sudo vagrant ssh`
+#Installing vagrant gem
+puts `gem install vagrant`
 
-# `cd /vagrant`
-# `sudo apt-get update`
-# `sudo apt-get -f install build-essential zlib1g-dev curl git-core sqlite3 libsqlite3-dev`  --> Y required
-# `git clone git://github.com/sstephenson/rbenv.git ~/.rbenv`
-# `echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile`
-# `echo 'eval "$(rbenv init -)"' >> ~/.bash_profile`
+#Removing relevant vagrant file
+`sudo rm -f Vagrantfile`
 
-# `source ~/.bash_profile`
-# `git clone git://github.com/sstephenson/ruby-build.git`
-# `cd ruby-build/`
-# `sudo ./install.sh`
+# Adding package box
+# add_box = `vagrant box add lucid64 http://files.vagrantup.com/lucid64.box`
+# puts "#{add_box}"
 
-# # `rbenv install 1.9.2-p290`
-# # `rbenv rehash`
-# # `rbenv global 1.9.2-p290`
-# `curl -L https://get.rvm.io | bash -s stable --ruby`
-# `source /home/vagrant/.rvm/scripts/rvm`
-# `rbenv rehash`
+#Start package box
+puts `sudo vagrant init ~/package`
+puts `sudo cp ~/GitHubCode/Vagrantfile ~/cisco-ini-project/wms/Vagrantfile`
+
+puts "Up the vagrant box"
+puts `sudo vagrant up`
+
+puts "ssh the box"
+# ssh_vag = `sudo vagrant ssh -c "rm -f test test1"`
+# puts "#{ssh_vag}"
 
 # `cd /vagrant`
 # `sudo gem install bundler`
