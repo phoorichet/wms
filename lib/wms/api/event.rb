@@ -1,13 +1,12 @@
+require 'active_support/concern'
+
 module Wms::Api::Event
+  extend ActiveSupport::Concern
 
   attr_accessor :options
 
   private
   attr_accessor :events
-
-  def self.included(base)
-    base.extend(Wms::Api::Event::ClassMethod)
-  end
 
   def set_options(options={})
     self.options = options
