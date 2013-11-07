@@ -8,7 +8,7 @@ class Widget < ActiveRecord::Base
 
   attr_accessible :collection, :config_file_path, :database, :description, 
                   :is_disable, :last_run_at, :name, :run_interval, 
-                  :url, :user_id, :version
+                  :url, :user_id, :version, :status
 
   belongs_to :user
 
@@ -43,44 +43,20 @@ class Widget < ActiveRecord::Base
         widget_class_str = "Wms::Widget::#{widget.name}"
         widget_class = widget_class_str.constantize
         widget_instance = widget_class.new
+        options = {
+          :widget => widget,
+          :begin => Time.local(2013, 9, 6),
+          :end => Time.local(2013, 9, 7)
+        }
+        widget_instance.register(options)
         widget_instance.run
       rescue Error => e
         puts "Error!!" 
+        widget.update_attribute(:status, "failed")
       end
+
     end
   end
-
-  # Create a new Analytic object and save it into mongodb
-  # @param {Hash} data Analytic data
-  # @param {Integer} wid Widget id
-  # @param {String} wname Widget name
-  # @param {Integer} uid User id
-  def create_analytics(data, wid, wname, uid)
-    config = source("widget/" + wname + "/config.yml")
-    attr_name = config[:development][:attributes]
-    
-    analytic = Analytic.new
-    analytic.widget_id = wid
-    analytic.user_id = uid
-
-    attr_name.each do |attr|
-      if data.has_key?(attr)
-        analytic.write_attribute(attr, data[attr])
-      else
-        raise "Analytic data attribute does not match config file"
-      end
-    end   
-    analytic.save
-  end
-
-  # Get all the analytics records of one widget
-  # @param {Integer} wid Widget id
-  # @return {Array} analytics Array of Analytic objects
-  def get_analytics(wid)
-    analytics = Analytic.where(widget_id: wid)
-    return analytics
-  end
-
 
   def run_widget(wid, wname, uid)
     # Read /widget/ for /widget/widget_name/
@@ -91,6 +67,7 @@ class Widget < ActiveRecord::Base
 
 
     this_file = File.expand_path("widget/" + wname + "/main.rb")
+    #this_file = File.expand_path("widget/locationwidget/main.rb")
  
     ruby = File.join(Config::CONFIG['bindir'], Config::CONFIG['ruby_install_name'])
     

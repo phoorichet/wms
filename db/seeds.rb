@@ -7,10 +7,25 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 
+# Get the first user
 user = User.first
 
+
+# Remove all existing widget first.
+Widget.all.each { |widget| widget.delete }
+
+widget1  = Widget.create({
+  :id => 1,
+  :name => "Widget1",
+  :description => "The first widget ever created.",
+  :version => "0.0.1",
+  :config_file_path => "widget/widget1",
+  :is_disable => false,
+  :user_id => user.id
+})
+
 location_widget  = Widget.create({
-  :id => 100,
+  :id => 2,
   :name => "LocationWidget",
   :description => "Find time spent from one page to another",
   :version => "0.0.1",
@@ -20,7 +35,7 @@ location_widget  = Widget.create({
 })
 
 wifi_widget  = Widget.create({
-  :id => 100,
+  :id => 3,
   :name => "WifiWidget",
   :description => "Find distint wifi list on 1-hour windows",
   :version => "0.0.1",
@@ -28,3 +43,5 @@ wifi_widget  = Widget.create({
   :is_disable => false,
   :user_id => user.id
 })
+
+

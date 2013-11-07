@@ -30,14 +30,18 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
   include Wms::Api::Event
   include Wms::Api::Analytic
   
+  attr_accessor :widget
+
   def initialize
     super
     @logger.debug "Init widget [#{self.class.name}]"
   end
 
   # @override
-  def register(option={})
-  
+  def register(options={})
+    @widget = options[:widget] 
+    @begin = options[:begin]
+    @end = options[:end]
   end
 
   # @override 
@@ -45,8 +49,43 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
     # Call api
     @logger.debug "Running widget [#{self.class.name}]" 
 
-    # Insert you code here
+    @logger.debug @widget
+
+    options = {
+      #:device_id => "12345678",
+      :type => "location",
+      :begin => @begin,
+      :end => @end
+    }
+
+    @events = get_events(options)
     
+    analytics = []
+
+    (@events.count.to_i - 1).times do |i|
+      cur = @events[i]
+      nxt = @events[i + 1]
+
+      analytic = {
+        :device_id => "123456789",
+        :widget_id => @widget.id,
+        :user_id => @widget.user.id,
+        :timestamp => Time.now,
+        :src => {
+          :latitude => cur["latitude"],
+          :longitude => cur["longitude"]
+        },
+        :dest => {
+          :latitude => nxt["latitude"],
+          :longitude => nxt["longitude"]
+        },
+        :time_spent => (nxt["timestamp"].to_f - cur["timestamp"].to_f) * 1000.0
+      }
+      analytics.push(analytic)
+    end
+    if analytics.length > 0
+      save_analytics(analytics)
+    end
   end
 
 end
