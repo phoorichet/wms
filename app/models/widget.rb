@@ -8,7 +8,7 @@ class Widget < ActiveRecord::Base
 
   attr_accessible :collection, :config_file_path, :database, :description, 
                   :is_disable, :last_run_at, :name, :run_interval, 
-                  :url, :user_id, :version
+                  :url, :user_id, :version, :status
 
   belongs_to :user
 
@@ -52,6 +52,7 @@ class Widget < ActiveRecord::Base
         widget_instance.run
       rescue Error => e
         puts "Error!!" 
+        widget.update_attribute(:status, "failed")
       end
 
     end
