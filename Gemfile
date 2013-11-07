@@ -62,5 +62,5 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails'
 
 # Fixed "ExecJS and could not find a JavaScript runtime" error
-gem 'execjs'
-gem 'therubyracer'
+#gem 'execjs'
+#gem 'therubyracer'
