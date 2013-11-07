@@ -40,6 +40,8 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
   # @override
   def register(options={})
     @widget = options[:widget] 
+    @begin = options[:begin]
+    @end = options[:end]
   end
 
   # @override 
@@ -52,8 +54,8 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
     options = {
       #:device_id => "12345678",
       :type => "location",
-      :begin => Time.local(2013, 9, 6),
-      :end => Time.local(2013, 9, 7)
+      :begin => @begin,
+      :end => @end
     }
 
     @events = get_events(options)

@@ -24,6 +24,8 @@ class Wms::Widget::Widget1 < Wms::Widget::Base
     # Insert you code here
     @logger.debug @widget
 
+    @events.wifi.where(:device_id => "99000204231618")
+
   end
 
   def save(data)
