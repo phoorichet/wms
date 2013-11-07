@@ -1,12 +1,10 @@
 require "wms/namespace"
 require "wms/api/event"
 require "wms/api/analytic"
-require "wms/config/mixin"
 
 class Wms::Api::Test
   include Wms::Api::Event
   include Wms::Api::Analytic
-  include Wms::Config::Mixin
 
   def print_something(*args)
     puts args
@@ -17,7 +15,6 @@ class Wms::Api::Test
       :type => "wifi_accesspoint_info",
       :begin => Time.local(2013, 9, 6),
       :end => Time.now
-
     }
 
     set_options(options)

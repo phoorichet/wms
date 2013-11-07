@@ -1,9 +1,9 @@
-module Wms::Api::Analytic
+require 'active_support/concern'
+require 'wms/config/mixin'
 
-  def self.included(base)
-    @analytic = Analytic
-    base.extend(Wms::Api::Analytic::ClassMethod)
-  end
+module Wms::Api::Analytic
+  extend ActiveSupport::Concern
+  include Wms::Config::Mixin
   
   def get_analytics(wid)
     analytics = Analytic.where(widget_id: wid)

@@ -1,4 +1,8 @@
+require 'active_support/concern'
+
 module Wms::Config::Mixin
+  extend ActiveSupport::Concern
+  
   # Adapted from http://speakmy.name/2011/05/29/simple-configuration-for-ruby-apps/
   # config for an instance
   attr_accessor :config

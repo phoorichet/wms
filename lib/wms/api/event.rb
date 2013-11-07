@@ -2,13 +2,12 @@ require 'active_support/concern'
 
 module Wms::Api::Event
   # Looks for ClassMethods to be included
-  extend ActiveSupport::Concern 
+  extend ActiveSupport::Concern
 
   attr_accessor :options
 
   #private
   attr_accessor :events
-
  
   # Get called when included
   included do
