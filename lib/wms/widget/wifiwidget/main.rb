@@ -31,14 +31,16 @@ class Wms::Widget::WifiWidget < Wms::Widget::Base
   include Wms::Api::Event
   include Wms::Api::Analytic
   
+  attr_accessor :widget
+
   def initialize
     super
     @logger.debug "Init widget [#{self.class.name}]"
   end
 
   # @override
-  def register(option={})
-  
+  def register(options={})
+    @widget = options[:widget]
   end
 
   # @override 
@@ -47,6 +49,7 @@ class Wms::Widget::WifiWidget < Wms::Widget::Base
     @logger.debug "Running widget [#{self.class.name}]" 
   
     # Insert your code here
+    @logger.debug @widget
   end
 
 end

@@ -44,7 +44,8 @@ class Widget < ActiveRecord::Base
         widget_class_str = "Wms::Widget::LocationWidget"
         widget_class = widget_class_str.constantize
         widget_instance = widget_class.new
-        widget_instance.run(self)
+        widget_instance.register(:widget => widget)
+        widget_instance.run
       rescue Error => e
         puts "Error!!" 
       end

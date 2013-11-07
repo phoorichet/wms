@@ -30,23 +30,27 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
   include Wms::Api::Event
   include Wms::Api::Analytic
   
+  attr_accessor :widget
+
   def initialize
     super
     @logger.debug "Init widget [#{self.class.name}]"
   end
 
   # @override
-  def register(option={})
-  
+  def register(options={})
+    @widget = options[:widget] 
   end
 
   # @override 
-  def run(widget)
+  def run
     # Call api
     @logger.debug "Running widget [#{self.class.name}]" 
 
+    @logger.debug @widget
+
     options = {
-      #:device_id => "99000204231618",
+      #:device_id => "12345678",
       :type => "location",
       :begin => Time.local(2013, 9, 6),
       :end => Time.local(2013, 9, 7)
@@ -56,17 +60,14 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
     
     analytics = []
 
-    puts "[DEBUG]"
-    puts @events.count
-
     (@events.count.to_i - 1).times do |i|
       cur = @events[i]
       nxt = @events[i + 1]
 
       analytic = {
         :device_id => "123456789",
-        :widget_id => widget.id,
-        :user_id => widget.user.id,
+        :widget_id => @widget.id,
+        :user_id => @widget.user.id,
         :timestamp => Time.now,
         :src => {
           :latitude => cur["latitude"],
