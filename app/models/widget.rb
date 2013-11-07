@@ -40,15 +40,20 @@ class Widget < ActiveRecord::Base
     self.all.each do |widget|
       begin
         # Convert class name as a string to a ruby class
-        #widget_class_str = "Wms::Widget::#{widget.name}"
-        widget_class_str = "Wms::Widget::LocationWidget"
+        widget_class_str = "Wms::Widget::#{widget.name}"
         widget_class = widget_class_str.constantize
         widget_instance = widget_class.new
-        widget_instance.register(:widget => widget)
+        options = {
+          :widget => widget,
+          :begin => Time.local(2013, 9, 6),
+          :end => Time.local(2013, 9, 7)
+        }
+        widget_instance.register(options)
         widget_instance.run
       rescue Error => e
         puts "Error!!" 
       end
+
     end
   end
 
