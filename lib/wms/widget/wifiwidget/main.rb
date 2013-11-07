@@ -1,7 +1,9 @@
 require 'wms/widget/base'
+require 'set'
 
 # This widget will read the wifi record from the event. It will then
-# find the list of distinct wifi ssid within 1-hour window.
+# find the list of distinct wifi ssid 
+# getting the unique wifi names..
 #
 # Input: a list of wifi events.
 # Output: analytics 
@@ -41,6 +43,8 @@ class Wms::Widget::WifiWidget < Wms::Widget::Base
   # @override
   def register(options={})
     @widget = options[:widget]
+    @begin = options[:begin]
+    @end = options[:end]
   end
 
   # @override 
@@ -49,9 +53,35 @@ class Wms::Widget::WifiWidget < Wms::Widget::Base
     @logger.debug "Running widget [#{self.class.name}]" 
   
     # Insert your code here
-    @logger.debug @widget
+    options = {
+      #:device_id => "12345678",
+      :type => "wifi_accesspoint_info",
+      :begin => @begin,
+      :end => @end
+    }
+    @events = get_events(options)
+    
+    analytics = []
+
+    (@events.count.to_i).times do |i|
+      wifi_arr = Set.new []
+      cur = @events[i]
+      wifi_lst = cur[wifi_list]
+      wifi_lst.each do |n|
+      wifi_arr.add(wifi_lst["SSID"])
+      end 
+      analytic = {
+        :device_id => "123456789",
+        :widget_id => @widget.id,
+        :user_id => @widget.user.id,
+        :timestamp => Time.now,
+        :wifi_ssid_list => wifi_arr
+      }
+      analytics.push(analytic)
+    end
+    if analytics.length > 0
+      save_analytics(analytics)
+    end    
   end
 
 end
-
-
