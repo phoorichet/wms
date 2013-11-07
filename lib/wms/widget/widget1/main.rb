@@ -1,4 +1,5 @@
 require 'wms/widget/base'
+require 'wms/api/event'
 
 class Wms::Widget::Widget1 < Wms::Widget::Base
   include Wms::Api::Event
@@ -18,9 +19,21 @@ class Wms::Widget::Widget1 < Wms::Widget::Base
     # Call api
     @logger.debug "Running widget [#{self.class.name}]" 
 
-    @events.wifi.where(:device_id => "99000204231618").each do |event|
+    #@events.wifi.where(:device_id => "99000204231618").each do |event|
+    #end
 
-    end
+    options = {
+      :device_id => "99000204231618",
+      :type => "location",
+      :begin => Time.local(2013, 9, 6),
+      :end => Time.local(2013, 9, 6)
+    }
+    @events = get_events(options)
+
+    # Compute the average speed between the start location
+    # and the end location
+    count = @events.length
+    timespan = 
     
     ''' 
     puts "Run..." 

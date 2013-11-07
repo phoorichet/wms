@@ -22,13 +22,13 @@ module Wms::Api::Event
   end
 
 
-  def set_options(options={})
-    self.options = options
-  end
+  # def set_options(options={})
+  #   self.options = options
+  # end
 
 
-  def events(&block)
-    events = Event.all_in(type: options[:type]).between(timestamp: options[:begin]..options[:end])
+  def get_events(options={})
+    events = Event.all_in(device_id: options[:device_id], type: options[:type]).between(timestamp: options[:begin]..options[:end]).order_by(:timestamp.asc)
     events_hash = []
     if events.length > 0
       events.each do |e|
