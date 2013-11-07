@@ -72,6 +72,15 @@ class Event
 
   attr_accessor :start_at, :end_at
 
+  # generate pretty json
+  def to_json_pretty
+    h = Hash.new
+    self.attributes.each do |k,v|
+      h[k] = v
+    end
+    JSON.pretty_generate h
+  end
+
   # Class methods
   def self.get_50events()
   

@@ -1,22 +1,24 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="panel panel-default">
+   <div class="panel-heading">
+     <h3 class="panel-title">
+       <%= link_to 'analytic', analytics_path %> /  <%= @analytic.id %>
+     </h3>
+   </div>
 
-<p>
-  <b>User:</b>
-  <%= @analytic.user_id %>
-</p>
-
-<p>
-  <b>Widget:</b>
-  <%= @analytic.widget_id %>
-</p>
-<p>
-  <b>Data:</b>
-  <pre>
-  <%= @analytic.to_json %>
-  </pre>
-</p>
+   <div class="panel-body">
+      <p id="notice"><%= notice %></p>
 
 
 
-<%= link_to 'Edit', edit_analytic_path(@analytic) %> |
-<%= link_to 'Back', analytics_path %>
+      <pre>
+      <%= @analytic.to_json_pretty %>
+      </pre>
+
+      <%= link_to 'Edit', edit_analytic_path(@analytic) %> |
+      <%= link_to 'Back', analytics_path %>
+    </div>
+
+  </div><!-- end div.panel -->
+</div><!-- end div.row-->

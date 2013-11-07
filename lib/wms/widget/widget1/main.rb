@@ -21,45 +21,9 @@ class Wms::Widget::Widget1 < Wms::Widget::Base
     # Call api
     @logger.debug "Running widget [#{self.class.name}]" 
 
-<<<<<<< HEAD
-    #@events.wifi.where(:device_id => "99000204231618").each do |event|
-    #end
-=======
     # Insert you code here
     @logger.debug @widget
 
-    @events.wifi.where(:device_id => "99000204231618").each do |event|
->>>>>>> 326c4b20bb0b1b4351ecb86cb467d54bbe12eead
-
-    options = {
-      :device_id => "99000204231618",
-      :type => "location",
-      :begin => Time.local(2013, 9, 6),
-      :end => Time.local(2013, 9, 6)
-    }
-    @events = get_events(options)
-
-    # Compute the average speed between the start location
-    # and the end location
-    count = @events.length
-    
-    ''' 
-    puts "Run..." 
-    puts 
-    event = self.events
-
-    event.limit(10).each do |e| 
-      puts e.to_json
-      e.delete("_id")
-      a = self.analytic.new(e.attributes)
-      a.save
-    end
-    puts 
-
-    #puts event.accelerometer_x = 1.0
-    #event.save
-    #puts @events.first.to_json
-    '''
   end
 
   def save(data)
