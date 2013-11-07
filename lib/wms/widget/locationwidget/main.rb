@@ -50,7 +50,7 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
     @logger.debug @widget
 
     options = {
-      #:device_id => "12345678",
+      :device_id => "12345678",
       :type => "location",
       :begin => Time.local(2013, 9, 6),
       :end => Time.local(2013, 9, 7)
