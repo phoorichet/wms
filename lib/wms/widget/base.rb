@@ -1,6 +1,7 @@
 require 'wms/plugin/plugin'
 require 'wms/config/mixin'
 require 'wms/api/event'
+require 'wms/api/analytic'
 
 class Wms::Widget::Base < Wms::Plugin::Plugin
   include Wms::Config::Mixin

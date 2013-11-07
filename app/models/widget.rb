@@ -25,8 +25,8 @@ class Widget < ActiveRecord::Base
     self.all.each do |widget|
       begin
         # Use the fixed path right now.
-        main_path = "wms/widget/#{widget.name}/main"
-        logger.debug("Loading widget [#{widget.name} from #{main_path}")
+        main_path = "wms/#{widget.config_file_path}/main"
+        logger.debug "Loading widget [#{widget.name} from #{main_path}]"
       
         require main_path
       rescue LoadError => e

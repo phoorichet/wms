@@ -70,9 +70,26 @@ class Event
   scope :location, where(:type => 'location')
   scope :audio, where(:type => 'audio')
 
+  attr_accessor :start_at, :end_at
+
   # Class methods
   def self.get_50events()
   
   end
 
+  # 
+  def self.startat(start_at)
+    @start_at = start_at
+    self
+  end
+
+  # 
+  def self.endat(end_at)
+    @end_at = end_at
+    self
+  end
+
+  def every_hour
+
+  end
 end

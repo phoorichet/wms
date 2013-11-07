@@ -52,6 +52,11 @@ class Wms::Input::AndroidWifiLocation < Wms::Input::Base
       normlaized_json_obj['timestamp'] = Time.at(json_obj[2] / 1000.0, json_obj[2] % 1000.0)
       normlaized_json_obj['device_id'] = json_obj[3]
       normlaized_json_obj['wifi_list'] = json_obj[4]['list']
+
+      # Convert string values into floats
+      convert_level_freq(normlaized_json_obj['wifi_list'])
+
+
       
     elsif json_obj[0] == 'location'
       normlaized_json_obj['type'] = 'location'
@@ -66,6 +71,14 @@ class Wms::Input::AndroidWifiLocation < Wms::Input::Base
     end
               
     return normlaized_json_obj
+  end
+
+  private
+  def convert_level_freq(wifi_list)
+    wifi_list.each do |wifi|
+      wifi[:level] = Integer(wifi[:level]) if wifi[:level]
+      wifi[:frequency] = Integer(wifi[:frequency]) if wifi(:frequency)
+    end
   end
 
 end
