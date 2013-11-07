@@ -27,7 +27,7 @@ module Wms::Api::Event
   end
 
 
-  def event(&block)
+  def events(&block)
     events = Event.all_in(type: options[:type]).between(timestamp: options[:begin]..options[:end])
     events_hash = []
     if events.length > 0
