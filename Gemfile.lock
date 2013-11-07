@@ -150,7 +150,6 @@ DEPENDENCIES
   bson_ext
   coffee-rails (~> 3.2.1)
   devise
-  execjs
   jquery-rails
   mongo
   mongoid (~> 3.0.0)

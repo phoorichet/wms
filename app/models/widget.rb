@@ -40,7 +40,8 @@ class Widget < ActiveRecord::Base
     self.all.each do |widget|
       begin
         # Convert class name as a string to a ruby class
-        widget_class_str = "Wms::Widget::#{widget.name}"
+        #widget_class_str = "Wms::Widget::#{widget.name}"
+        widget_class_str = "Wms::Widget::LocationWidget"
         widget_class = widget_class_str.constantize
         widget_instance = widget_class.new
         widget_instance.run
@@ -49,38 +50,6 @@ class Widget < ActiveRecord::Base
       end
     end
   end
-
-  # Create a new Analytic object and save it into mongodb
-  # @param {Hash} data Analytic data
-  # @param {Integer} wid Widget id
-  # @param {String} wname Widget name
-  # @param {Integer} uid User id
-  def create_analytics(data, wid, wname, uid)
-    config = source("widget/" + wname + "/config.yml")
-    attr_name = config[:development][:attributes]
-    
-    analytic = Analytic.new
-    analytic.widget_id = wid
-    analytic.user_id = uid
-
-    attr_name.each do |attr|
-      if data.has_key?(attr)
-        analytic.write_attribute(attr, data[attr])
-      else
-        raise "Analytic data attribute does not match config file"
-      end
-    end   
-    analytic.save
-  end
-
-  # Get all the analytics records of one widget
-  # @param {Integer} wid Widget id
-  # @return {Array} analytics Array of Analytic objects
-  def get_analytics(wid)
-    analytics = Analytic.where(widget_id: wid)
-    return analytics
-  end
-
 
   def run_widget(wid, wname, uid)
     # Read /widget/ for /widget/widget_name/
@@ -91,6 +60,7 @@ class Widget < ActiveRecord::Base
 
 
     this_file = File.expand_path("widget/" + wname + "/main.rb")
+    #this_file = File.expand_path("widget/locationwidget/main.rb")
  
     ruby = File.join(Config::CONFIG['bindir'], Config::CONFIG['ruby_install_name'])
     

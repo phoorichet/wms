@@ -45,8 +45,40 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
     # Call api
     @logger.debug "Running widget [#{self.class.name}]" 
 
-    # Insert you code here
+    options = {
+      #:device_id => "99000204231618",
+      :type => "location",
+      :begin => Time.local(2013, 9, 6),
+      :end => Time.local(2013, 9, 7)
+    }
+
+    @events = get_events(options)
     
+    analytics = []
+    (@events.count.to_i - 1).times do |i|
+      cur = @events[i]
+      nxt = @events[i + 1]
+
+      analytic = {
+        :device_id => "123456789",
+        :widget_id => self.id,
+        :user_id => self.user.id,
+        :timestamp => Time.now,
+        :src => {
+          :latitude => cur["latitude"],
+          :longitude => cur["longitude"]
+        },
+        :dest => {
+          :latitude => nxt["latitude"],
+          :longitude => nxt["longitude"]
+        },
+        :time_spent => (nxt["timestamp"].to_f - cur["timestamp"].to_f) * 1000.0
+      }
+      analytics.push(analytic)
+    end
+    if analytics.length > 0
+      save_analytics(analytics)
+    end
   end
 
 end
