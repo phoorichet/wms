@@ -9,6 +9,16 @@
 
 user = User.first
 
+widget1  = Widget.create({
+  :id => 102,
+  :name => "Widget1",
+  :description => "Find distint wifi list on 1-hour windows",
+  :version => "0.0.1",
+  :config_file_path => "widget/widget1",
+  :is_disable => false,
+  :user_id => user.id
+})
+
 location_widget  = Widget.create({
   :id => 100,
   :name => "LocationWidget",
@@ -20,7 +30,7 @@ location_widget  = Widget.create({
 })
 
 wifi_widget  = Widget.create({
-  :id => 100,
+  :id => 101,
   :name => "WifiWidget",
   :description => "Find distint wifi list on 1-hour windows",
   :version => "0.0.1",
@@ -28,3 +38,5 @@ wifi_widget  = Widget.create({
   :is_disable => false,
   :user_id => user.id
 })
+
+
