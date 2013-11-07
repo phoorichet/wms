@@ -41,7 +41,7 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
   end
 
   # @override 
-  def run
+  def run(widget)
     # Call api
     @logger.debug "Running widget [#{self.class.name}]" 
 
@@ -55,14 +55,18 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
     @events = get_events(options)
     
     analytics = []
+
+    puts "[DEBUG]"
+    puts @events.count
+
     (@events.count.to_i - 1).times do |i|
       cur = @events[i]
       nxt = @events[i + 1]
 
       analytic = {
         :device_id => "123456789",
-        :widget_id => self.id,
-        :user_id => self.user.id,
+        :widget_id => widget.id,
+        :user_id => widget.user.id,
         :timestamp => Time.now,
         :src => {
           :latitude => cur["latitude"],

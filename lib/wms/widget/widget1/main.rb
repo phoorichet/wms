@@ -33,7 +33,6 @@ class Wms::Widget::Widget1 < Wms::Widget::Base
     # Compute the average speed between the start location
     # and the end location
     count = @events.length
-    timespan = 
     
     ''' 
     puts "Run..." 
