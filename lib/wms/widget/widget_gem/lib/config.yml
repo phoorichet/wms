@@ -1,0 +1,10 @@
+development:
+      attributes:
+        - attr1
+        - attr2
+        - attr3
+test:
+      attributes:
+        - attr1
+        - attr2
+        - attr3
