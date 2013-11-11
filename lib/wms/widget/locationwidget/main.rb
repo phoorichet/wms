@@ -79,7 +79,7 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
         },
         :time_spent => (nxt["timestamp"].to_f - cur["timestamp"].to_f) * 1000.0
       }
-      save_analytics(analytics)
+      save_analytics(analytic)
     end
   end
 
