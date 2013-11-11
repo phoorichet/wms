@@ -59,9 +59,7 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
     }
 
     @events = get_events(options)
-    
-    analytics = []
-
+  
     (@events.count.to_i - 1).times do |i|
       cur = @events[i]
       nxt = @events[i + 1]
@@ -81,10 +79,7 @@ class Wms::Widget::LocationWidget < Wms::Widget::Base
         },
         :time_spent => (nxt["timestamp"].to_f - cur["timestamp"].to_f) * 1000.0
       }
-      analytics.push(analytic)
-    end
-    if analytics.length > 0
-      save_analytics(analytics)
+      save_analytics(analytic)
     end
   end
 
