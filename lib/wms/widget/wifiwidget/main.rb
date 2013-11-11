@@ -60,8 +60,6 @@ class Wms::Widget::WifiWidget < Wms::Widget::Base
       :end => @end
     }
     @events = get_events(options)
-    
-    analytics = []
 
     (@events.count.to_i).times do |i|
       wifi_arr = Set.new []
@@ -77,11 +75,8 @@ class Wms::Widget::WifiWidget < Wms::Widget::Base
         :timestamp => Time.now,
         :wifi_ssid_list => wifi_arr
       }
-      analytics.push(analytic)
-    end
-    if analytics.length > 0
-      save_analytics(analytics)
-    end    
+      save_analytics(analytic)
+    end  
   end
 
 end
