@@ -76,8 +76,8 @@ class Wms::Input::AndroidWifiLocation < Wms::Input::Base
   private
   def convert_level_freq(wifi_list)
     wifi_list.each do |wifi|
-      wifi[:level] = Integer(wifi[:level]) if wifi[:level]
-      wifi[:frequency] = Integer(wifi[:frequency]) if wifi(:frequency)
+      wifi['level'] = wifi['level'].to_i if wifi['level']
+      wifi['frequency'] = wifi['frequency'].to_i if wifi['frequency']
     end
   end
 

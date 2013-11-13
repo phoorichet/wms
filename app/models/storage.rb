@@ -92,7 +92,7 @@ class Storage < ActiveRecord::Base
             create_event data
             
           rescue Exception => e
-            logger.error "ERROR #{self.class.name}: #{e}"
+            logger.error "ERROR #{self.class.name}: #{e} for #{data}"
           end
           last_parsed_line += 1
         end
