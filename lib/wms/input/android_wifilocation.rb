@@ -2,7 +2,7 @@ require 'wms/namespace'
 require 'wms/input/base'
 require 'wms/config/mixin'
 require 'csv'
-require 'Time'
+require 'time'
 
 class Wms::Input::AndroidWifiLocation < Wms::Input::Base
 
