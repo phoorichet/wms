@@ -27,21 +27,25 @@ class Wms::Widget::WifiWidget < Wms::Widget::Base
 
   # @override
   def register(option={})
-  @widget = options[:widget] 
+    @widget = options[:widget] 
+    @begin = options[:begin]
+    @end = options[:end]
   end
 
   # @override 
   def run
     # Call api
     @logger.debug "Running widget [#{self.class.name}]" 
+    
     analytics = []
+    
     options = {
           :type => "location",  
-          :begin => Time.local(2013, 9, 6),
-          :end => Time.loca(2013, 9, 6)
+          :begin => @begin,
+          :end => @end
     }
-    @events = get_events(options)
     
+    @events = get_events(options)
     
     (@events.count.to_i).times do |i|
       5.each do|i|
