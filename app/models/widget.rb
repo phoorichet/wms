@@ -13,12 +13,6 @@ class Widget < ActiveRecord::Base
   belongs_to :user
 
 
-  # testdfasdfasdfsd
-  # Initialize the necessary settings
-  def init
-    
-  end
-
   # This method will list all the widgets that were installed.
   # The method looks up for type
   def self.load_widgets
@@ -58,6 +52,10 @@ class Widget < ActiveRecord::Base
     end
   end
 
+  def get_analytics
+    Analytic.where(:widget_id => self.id, :user_id => self.user.id)
+  end
+
   def run_widget(wid, wname, uid)
     # Read /widget/ for /widget/widget_name/
 
@@ -78,5 +76,6 @@ class Widget < ActiveRecord::Base
 
     #create_analytics(data, wid, wname, uid)
   end
+
 
 end

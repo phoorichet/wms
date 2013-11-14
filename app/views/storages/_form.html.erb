@@ -12,12 +12,12 @@
   <% end %>
 
   <div class="fileupload">
-    <%= f.file_field :rawlog, :class => "btn btn-default" %>
+    <%= f.file_field :file, :class => "btn btn-default" %>
   </div>
 
 
   <div class="type">
-    <%= f.select :storage_type, options_for_select([ "wifilocation", "sensor", "audio" ], "wifilocation")%>
+    <%= f.select :file_type, options_for_select([ "wifilocation", "sensor", "audio" ], "wifilocation")%>
   </div>
 
   <div>
