@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131021215011) do
+ActiveRecord::Schema.define(:version => 20131114023905) do
 
   create_table "analytics", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -19,18 +19,20 @@ ActiveRecord::Schema.define(:version => 20131021215011) do
   end
 
   create_table "storages", :force => true do |t|
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
-    t.string   "rawlog_file_name"
-    t.string   "rawlog_content_type"
-    t.integer  "rawlog_file_size"
-    t.datetime "rawlog_updated_at"
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.integer  "user_id"
-    t.string   "storage_type"
+    t.string   "file_type"
     t.string   "status"
     t.integer  "last_parsed_line"
-    t.integer  "count_success",       :default => 0, :null => false
-    t.integer  "count_failure",       :default => 0, :null => false
+    t.integer  "count_success",     :default => 0, :null => false
+    t.integer  "count_failure",     :default => 0, :null => false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.boolean  "compressed"
+    t.string   "device_id"
   end
 
   add_index "storages", ["user_id"], :name => "index_storages_on_user_id"
@@ -67,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20131021215011) do
     t.integer  "user_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "status"
   end
 
   add_index "widgets", ["user_id"], :name => "index_widgets_on_user_id"

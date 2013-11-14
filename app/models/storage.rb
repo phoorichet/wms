@@ -8,13 +8,14 @@ class Storage < ActiveRecord::Base
   belongs_to :user
 
   # PT:: paperclip attr_accessible
-  attr_accessible :rawlog, :storage_type, :status, :last_parsed_line, :count_success, :count_failure
+  # attr_accessible :rawlog, :storage_type, :status, :last_parsed_line, :count_success, :count_failure
+  attr_accessible :file, :file_type, :status, :last_parsed_line, :count_success, :count_failure, :device_id, :compressed
 
   # attr_accessor :options
   # attr_reader :storage_type_options, :status_options, :status_default
   
   # Enable Paperclip
-  has_attached_file :rawlog
+  has_attached_file :file
 
   # Aaviable types for storage_type.
   # This will use for from validation.
@@ -22,11 +23,11 @@ class Storage < ActiveRecord::Base
   STORAGE_TYPE = ["wifilocation", "sensor", "audio"]
 
   # Validation
-  validates :rawlog, :attachment_presence => true
-  validates :storage_type, :presence=> true
-  validates :storage_type, :inclusion => { in:  ["wifilocation", "sensor", "audio"] }
-  validates :status, :presence=> true
-  validates :status, :inclusion => { in:  ["uploaded", "parsed", "finished"] }
+  validates :file, :attachment_presence => true
+  validates :file_type, :presence=> true
+  # validates :file_type, :inclusion => { in:  ["wifilocation", "sensor", "audio"] }
+  # validates :status, :presence=> true
+  # validates :status, :inclusion => { in:  ["uploaded", "parsed", "finished"] }
 
 
   # Calll defaults after an instance get initialized
@@ -47,8 +48,8 @@ class Storage < ActiveRecord::Base
   #
   def make_options
     options = Hash.new
-    options[:storage_type] = self.storage_type
-    options[:filepath] = self.rawlog.path
+    options[:file_type] = self.file_type
+    options[:filepath] = self.file.path
     
     options
   end
@@ -66,21 +67,21 @@ class Storage < ActiveRecord::Base
   #
   # Right now, MongoDB is used as main repository.
   def parse
-    logger.debug "Reading stoage file from: #{self.rawlog.path}"
+    logger.debug "Reading stoage file from: #{self.file.path}"
     if self.status != 'finished'
       last_parsed_line = self.last_parsed_line
       # make_options
       begin
         # Match the proper parser and build options
-        case self.storage_type
+        case self.file_type
         when "wifilocation"
           @parser = Wms::Input::AndroidWifiLocation
         when "sensor"
           @parser = Wms::Input::AndroidSensor
         when "audio"
-          raise "Not Supported yet storage type #{storage_type}"
+          raise "Not Supported yet storage type #{file_type}"
         else
-          raise "Undefined storage type #{storage_type}"
+          raise "Undefined storage type #{file_type}"
         end
 
         @processor = @parser.new
