@@ -1,7 +1,7 @@
 class StoragesController < ApplicationController
 
   # PT:: make sure that the user is authenticated.
-  before_filter :authenticate_user!
+  # before_filter :authenticate_user!
 
   # GET /storages
   # GET /storages.json
@@ -43,8 +43,16 @@ class StoragesController < ApplicationController
 
   # POST /storages
   # POST /storages.json
+  #
   def create
-    @storage = current_user.storages.new(params[:storage])
+    user = User.first
+    storage_data = Hash.new
+    storage_data[:file] = params[:file]
+    storage_data[:device_id] = params[:device_id]
+    storage_data[:compressed] = params[:compressed] == 'true'
+    storage_data[:file_type] = params[:file_type]
+    puts "  =====> #{storage_data}"
+    @storage = user.storages.new(storage_data)
 
     respond_to do |format|
       if @storage.save
