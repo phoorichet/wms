@@ -13,7 +13,6 @@ module Wms::Api::Analytic
   def save_analytics(data)
     # config = source("lib/wms/widget/" + wname + "/config.yml")
     # attr_name = config[:development][:attributes]
-    analytic = Analytic.new
 
     # Check whether attributes match the ones in config file
     # attr_name.each do |attr|
@@ -23,15 +22,12 @@ module Wms::Api::Analytic
     #     raise "config file mismatch"
     #   end
     # end  
-
-    data.each do |d|
-      analytic = Analytic.new
-      d.each do |key, value|
-        analytic.write_attribute(key, value)
-      end
-      analytic.save
+    analytic = Analytic.new
+    data.each do |key, value|
+      analytic.write_attribute(key, value)
     end
-
+    analytic.save
+    
   end
 
   module ClassMethod

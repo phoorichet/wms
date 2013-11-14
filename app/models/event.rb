@@ -11,7 +11,7 @@ class Event
   include Mongoid::Document
 
   # Define Mongodb configurtions
-  store_in collection: "events", database: "wms_dev", session: "default"
+  store_in collection: "events", database: "test", session: "default"
 
   # Requried fields
   field :timestamp, type: DateTime
