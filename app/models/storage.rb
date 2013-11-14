@@ -50,7 +50,9 @@ class Storage < ActiveRecord::Base
     options = Hash.new
     options[:file_type] = self.file_type
     options[:filepath] = self.file.path
-    
+    options[:compressed] = self.compressed
+    options[:device_id] = self.device_id
+    options[:file_ext] = File.extname(self.file.path) # Create extname lile ".gz"
     options
   end
 
