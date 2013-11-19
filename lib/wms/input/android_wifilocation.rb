@@ -12,10 +12,10 @@ class Wms::Input::AndroidWifiLocation < Wms::Input::Base
   public
   def register(options={})
     raise "#{self.class.name}: filepath required in options" unless options[:filepath]
-    @filepath = options[:filepath]
+    @filepath   = options[:filepath]
     @compressed = options[:compressed]
-    @file_ext = options[:file_ext]
-    @is_gz = options[:file_ext] == '.gz'
+    @file_ext   = options[:file_ext]
+    @is_gz      = options[:file_ext] == '.gz'
     
   end # def register
 
@@ -47,8 +47,23 @@ class Wms::Input::AndroidWifiLocation < Wms::Input::Base
 
       @logger.debug "Total line: %d" % total_lines
     else
-      raise "Error: #{self.class.name} does not support #{@file_ext}."
+      File.open(@filepath, "r").each_line do |line|
+        str_arr = []
+        str_arr << '['
+        str_arr << line
+        str_arr << ']'
+        joined_str = str_arr.join("")
+        json_obj = JSON.parse(joined_str)
+
+        norm_json = normlaize_json_obj(json_obj)
+        callback = block
+        callback.call(norm_json)
+        # @logger.debug ">>>>>>#{norm_json}"
+
+        total_lines += 1
+      end
     end
+
   end # end run(&block)
 
 
