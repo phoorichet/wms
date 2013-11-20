@@ -94,10 +94,10 @@ class StoragesController < ApplicationController
     end
   end
 
-  # POST /storages/upload
-  # PT:: upload a raw data file to storage
-  # TODO: Validate type of file and its contents
-  def upload
+  # GET /storages/show_upload
+  # GET /storages/show_upload.json
+  #
+  def show_upload
     @storage = current_user.storages.new
 
     respond_to do |format|
@@ -112,5 +112,30 @@ class StoragesController < ApplicationController
     @storage.parse
 
   end
+
+  # POST /upload
+  # POST /upload.json
+  #
+  def upload
+    user = User.first
+    storage_data = Hash.new
+    storage_data[:file] = params[:file]
+    storage_data[:device_id] = params[:device_id]
+    storage_data[:compressed] = params[:compressed] == 'true'
+    storage_data[:file_type] = params[:file_type]
+    puts "  =====> #{storage_data}"
+    @storage = user.storages.new(storage_data)
+
+    respond_to do |format|
+      if @storage.save
+        format.html { redirect_to @storage, notice: 'Storage was successfully created.' }
+        format.json { render json: @storage, status: :created, location: @storage }
+      else
+        format.html { render action: "new" }
+        format.json { render json: @storage.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
 end
