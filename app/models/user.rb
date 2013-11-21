@@ -17,4 +17,8 @@ class User < ActiveRecord::Base
   def events
     Event.where(:user_id => self.id).limit(20).sort(:timestamp => -1)
   end
+
+  def find_by_device_id(device_id)
+    User.where(:device_id => device_id).first
+  end
 end
