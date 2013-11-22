@@ -11,13 +11,7 @@ class Widget < ActiveRecord::Base
                   :url, :user_id, :version, :status
 
   belongs_to :user
-
-
-  # testdfasdfasdfsd
-  # Initialize the necessary settings
-  def init
-    
-  end
+$flag = 0
 
   # This method will list all the widgets that were installed.
   # The method looks up for type
@@ -37,25 +31,32 @@ class Widget < ActiveRecord::Base
 
   # This method will retrive widget classes and  call run method on them
   def self.run_widgets
+    threads = []
     self.all.each do |widget|
-      begin
-        # Convert class name as a string to a ruby class
-        widget_class_str = "Wms::Widget::#{widget.name}"
-        widget_class = widget_class_str.constantize
-        widget_instance = widget_class.new
-        options = {
-          :widget => widget,
-          :begin => Time.local(2013, 9, 6),
-          :end => Time.local(2013, 9, 7)
-        }
-        widget_instance.register(options)
-        widget_instance.run
-      rescue Error => e
-        puts "Error!!" 
-        widget.update_attribute(:status, "failed")
+      threads << Thread.new do
+         begin
+           # Convert class name as a string to a ruby class
+           widget_class_str = "Wms::Widget::#{widget.name}"
+           widget_class = widget_class_str.constantize
+           widget_instance = widget_class.new
+           options = {
+             :widget => widget,
+             :begin => Time.local(2013, 9, 6),
+             :end => Time.local(2013, 9, 7)
+           }
+           widget_instance.register(options)
+           widget_instance.run
+         rescue Error => e
+           puts "Error!!" 
+           widget.update_attribute(:status, "failed")
+         end
       end
-
+       threads.each(&:join)
     end
+  end
+
+  def get_analytics
+    Analytic.where(:widget_id => self.id, :user_id => self.user.id)
   end
 
   def run_widget(wid, wname, uid)
@@ -78,5 +79,6 @@ class Widget < ActiveRecord::Base
 
     #create_analytics(data, wid, wname, uid)
   end
+
 
 end

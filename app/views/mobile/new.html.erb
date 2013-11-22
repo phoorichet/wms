@@ -1,9 +1,8 @@
 <div class="container">
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => "form-signup"})  do |f| %>
+<%= form_for(@user, :url => user_registration_path, :html => {:class => "form-signup"})  do |f| %>
   <h2 class="form-signup-heading">Sign up</h2>
 
 
-  <%= devise_error_messages! %>
 
   <%= f.email_field :email, :autofocus => true, :class => "form-control", :placeholder => "Email address" %>
 
@@ -14,7 +13,6 @@
 
 
   <%= f.submit "Sign up", :class => "btn btn-lg btn-primary btn-block" %>
-  <%= render "devise/shared/links" %>
 <% end %>
 
 </div> <!-- /container -->

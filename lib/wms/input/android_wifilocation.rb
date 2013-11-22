@@ -2,7 +2,7 @@ require 'wms/namespace'
 require 'wms/input/base'
 require 'wms/config/mixin'
 require 'csv'
-require 'Time'
+require 'time'
 
 class Wms::Input::AndroidWifiLocation < Wms::Input::Base
 
@@ -12,7 +12,10 @@ class Wms::Input::AndroidWifiLocation < Wms::Input::Base
   public
   def register(options={})
     raise "#{self.class.name}: filepath required in options" unless options[:filepath]
-    @filepath = options[:filepath]
+    @filepath   = options[:filepath]
+    @compressed = options[:compressed]
+    @file_ext   = options[:file_ext]
+    @is_gz      = options[:file_ext] == '.gz'
     
   end # def register
 
@@ -23,23 +26,44 @@ class Wms::Input::AndroidWifiLocation < Wms::Input::Base
     # adding options to make data manipulation easy
     total_lines = 0
     str_arr = []
-    File.open(@filepath, "r").each_line do |line|
-      str_arr = []
-      str_arr << '['
-      str_arr << line
-      str_arr << ']'
-      joined_str = str_arr.join("")
-      json_obj = JSON.parse(joined_str)
+    if @is_gz
+      Zlib::GzipReader.open(@filepath) do |csv|
+        csv.read.each_line do |line|
+          str_arr = []
+          str_arr << '['
+          str_arr << line
+          str_arr << ']'
+          joined_str = str_arr.join("")
+          json_obj = JSON.parse(joined_str)
 
-      norm_json = normlaize_json_obj(json_obj)
-      callback = block
-      callback.call(norm_json)
-      # @logger.debug ">>>>>>#{norm_json}"
+          norm_json = normlaize_json_obj(json_obj)
+          callback = block
+          callback.call(norm_json)
+          # @logger.debug ">>>>>>#{norm_json}"
 
-      total_lines += 1
+          total_lines += 1
+        end
+      end
+
+      @logger.debug "Total line: %d" % total_lines
+    else
+      File.open(@filepath, "r").each_line do |line|
+        str_arr = []
+        str_arr << '['
+        str_arr << line
+        str_arr << ']'
+        joined_str = str_arr.join("")
+        json_obj = JSON.parse(joined_str)
+
+        norm_json = normlaize_json_obj(json_obj)
+        callback = block
+        callback.call(norm_json)
+        # @logger.debug ">>>>>>#{norm_json}"
+
+        total_lines += 1
+      end
     end
 
-    @logger.debug "Total line: %d" % total_lines
   end # end run(&block)
 
 
@@ -76,8 +100,8 @@ class Wms::Input::AndroidWifiLocation < Wms::Input::Base
   private
   def convert_level_freq(wifi_list)
     wifi_list.each do |wifi|
-      wifi[:level] = Integer(wifi[:level]) if wifi[:level]
-      wifi[:frequency] = Integer(wifi[:frequency]) if wifi(:frequency)
+      wifi['level'] = wifi['level'].to_i if wifi['level']
+      wifi['frequency'] = wifi['frequency'].to_i if wifi['frequency']
     end
   end
 

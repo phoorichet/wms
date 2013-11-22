@@ -28,8 +28,15 @@ Wms::Application.routes.draw do
     end
 
     collection do
-      get 'upload'      # Upload files
+      get 'show_upload'     # show upload files
+      post 'upload'         # upload files
     end
+  end
+
+  match '/mobiles/new', :to => 'mobile#new'
+
+  devise_scope :user do
+    post "mobiles/registration", :to => "mobile#register"
   end
 
   # PT:: Match upload to new method
