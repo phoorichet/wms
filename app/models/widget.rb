@@ -4,9 +4,7 @@ require 'rbconfig'
 class Widget < ActiveRecord::Base
   include Wms::Config::Mixin
 
-  attr_accessible :collection, :config_file_path, :database, :description, 
-                  :is_disable, :last_run_at, :name, :run_interval, 
-                  :url, :user_id, :version, :status
+  attr_accessible :description, :is_disable, :last_run_at, :name, :run_interval, :homepage, :user_id, :version, :status, :class_name
 
   belongs_to :user
 
