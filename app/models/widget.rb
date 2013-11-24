@@ -1,6 +1,4 @@
-require 'wms/namespace'
-require 'wms/config/mixin'
-require 'wms/error'
+require 'wms'
 require 'rbconfig'
 
 class Widget < ActiveRecord::Base
@@ -11,7 +9,6 @@ class Widget < ActiveRecord::Base
                   :url, :user_id, :version, :status
 
   belongs_to :user
-$flag = 0
 
   # This method will list all the widgets that were installed.
   # The method looks up for type
@@ -55,30 +52,8 @@ $flag = 0
     end
   end
 
-  def get_analytics
-    Analytic.where(:widget_id => self.id, :user_id => self.user.id)
+  def get_analytics(page)
+    Analytic.where(:widget_id => self.id, :user_id => self.user.id).page(page)
   end
-
-  def run_widget(wid, wname, uid)
-    # Read /widget/ for /widget/widget_name/
-
-    # Read configuration by calling get_config() in main.rb
-
-    # Call run() in main.rb
-
-
-    this_file = File.expand_path("widget/" + wname + "/main.rb")
-    #this_file = File.expand_path("widget/locationwidget/main.rb")
- 
-    ruby = File.join(Config::CONFIG['bindir'], Config::CONFIG['ruby_install_name'])
-    
-    data = `#{ruby} -r#{this_file} -e'get_data'`
-
-
-    #data = main.run()
-
-    #create_analytics(data, wid, wname, uid)
-  end
-
 
 end

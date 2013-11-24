@@ -14,7 +14,6 @@
           <th>status</th>
           <th>created_at</th>
           <th></th>
-          <th></th>
         </tr>
 
       <% @storages.each do |storage| %>
@@ -25,12 +24,12 @@
           <td><%= storage.device_id %></td>
           <td><%= storage.status %></td>
           <td><%= storage.created_at %></td>
-          <td><%= link_to 'Edit', edit_storage_path(storage) %></td>
-          <td><%= link_to 'Destroy', storage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', storage, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
       </table>
 
+      <%= paginate @storages %>
       <br />
 
       <!--%= link_to 'New Storage', new_storage_path %-->

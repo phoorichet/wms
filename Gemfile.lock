@@ -144,6 +144,8 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.3)
       rack (>= 1.0)
+    wms (0.0.2)
+    wms_location1 (0.0.6)
 
 PLATFORMS
   ruby
@@ -163,3 +165,5 @@ DEPENDENCIES
   settingslogic
   sqlite3
   uglifier (>= 1.0.3)
+  wms (~> 0.0.2)
+  wms_location1 (~> 0.0.6)

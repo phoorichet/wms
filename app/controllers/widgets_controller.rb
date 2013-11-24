@@ -6,7 +6,8 @@ class WidgetsController < ApplicationController
   # GET /widgets
   # GET /widgets.json
   def index
-    @widgets = current_user.widgets.all
+    page = params[:page] || 1
+    @widgets = current_user.widgets.page(page)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +18,9 @@ class WidgetsController < ApplicationController
   # GET /widgets/1
   # GET /widgets/1.json
   def show
+    page = params[:page] || 1
     @widget = current_user.widgets.find(params[:id])
+    @analytics = @widget.get_analytics(page)
 
     respond_to do |format|
       format.html # show.html.erb

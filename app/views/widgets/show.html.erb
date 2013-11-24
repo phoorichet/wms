@@ -83,23 +83,20 @@
           <th>Timestamp</th>
           <th>Widget ID</th>
           <th></th>
-          <th></th>
-          <th></th>
         </tr>
         
-        <% @widget.get_analytics.each do |analytic| %>
+        <% @analytics.each do |analytic| %>
 <tr>
             <td><%= link_to analytic.id, analytic %></td>
             <td><%= analytic.timestamp %></td>
             <td><%= link_to analytic.widget_id, widget_path(analytic.widget_id)  %></td>
-            <td><%= link_to 'Show', analytic %></td>
-            <td><%= link_to 'Edit', edit_analytic_path(analytic) %></td>
-            <td><%= link_to 'Destroy', analytic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Delete', analytic, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
 
         <% end %>
       </table>
-
+      
+      <%= paginate @analytics %>
       <br />
 
     </div><!-- end div.panel-body -->

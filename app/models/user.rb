@@ -15,10 +15,14 @@ class User < ActiveRecord::Base
 
   # Add events method as a getter because Event class is not inherited from ActiveRecord
   def events
-    Event.where(:user_id => self.id).limit(20).sort(:timestamp => -1)
+    Event.where(:user_id => self.id)
   end
 
   def find_by_device_id(device_id)
     User.where(:device_id => device_id).first
+  end
+
+  def analytics
+    Analytic.where(:user_id => self.id)
   end
 end

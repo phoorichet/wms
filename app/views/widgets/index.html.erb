@@ -24,11 +24,12 @@
           <td><%= widget.run_interval %></td>
           <td><%= widget.is_disable %></td>
           <td><%= link_to 'Edit', edit_widget_path(widget) %></td>
-          <td><%= link_to 'Destroy', widget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'Delete', widget, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
       </table>
 
+      <%= paginate @widgets %>
       <br />
 
       <%= link_to 'New Widget', new_widget_path, :class => "btn btn-default" %>
