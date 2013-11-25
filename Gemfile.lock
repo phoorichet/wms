@@ -119,6 +119,7 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    redis (2.1.1)
     sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -159,6 +160,7 @@ DEPENDENCIES
   mongoid (~> 3.0.0)
   paperclip (~> 3.0)
   rails (= 3.2.13)
+  redis (= 2.1.1)
   sass-rails (~> 3.2.3)
   settingslogic
   sqlite3

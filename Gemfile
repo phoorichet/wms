@@ -67,3 +67,5 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 
 # Pagination
 gem 'kaminari'
+
+gem 'redis', '2.1.1'
