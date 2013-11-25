@@ -12,13 +12,14 @@ class Widget < ActiveRecord::Base
   # The method looks up for type
   def self.load_widgets
     self.all.each do |widget|
-      begin
-        # Use the fixed path right now.
-        main_path = "wms/#{widget.config_file_path}/main"
-        logger.debug "Loading widget [#{widget.name} from #{main_path}]"
+      # Load the path for the name
+      main_path = self.name.gsub("-","/")
+      logger.debug "Loading widget [#{widget.name} from #{main_path}]"
       
+      begin
         require main_path
       rescue LoadError => e
+        logger.error e
         raise Wms::PluginLoadingError
       end # end begin
     end # end each
@@ -31,7 +32,7 @@ class Widget < ActiveRecord::Base
       threads << Thread.new do
          begin
            # Convert class name as a string to a ruby class
-           widget_class_str = "Wms::Widget::#{widget.name}"
+           widget_class_str = widget.class_name
            widget_class = widget_class_str.constantize
            widget_instance = widget_class.new
            options = {

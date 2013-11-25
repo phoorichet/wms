@@ -31,6 +31,65 @@ def install_gem(user, name, opt={})
     end
 
     puts widget
+
+    lines = []
+    # Modify Gemfile
+    File.open('Gemfile', 'r').each_line do |line|
+      lines << line
+      # if line.include? "#{name}"
+      #   puts "  ==> Found #{name}"
+      # end
+    end
+
+    count = 0
+    found_gem = false
+    gemfile_modified = false
+    lines.each do |line|
+      # puts "  ==> [#{count}]: #{line}"
+      if line.include? "#{name}"
+        found_gem = true
+        puts "  ===> Found #{line}"
+        line_split = line.split(',')
+        if line_split.size > 1
+          gem_version = line_split[1]
+          puts "  ===> Gemversion is #{gem_version} vs '~> #{version}'"
+          if gem_version.strip != "'~> #{version}'"
+            new_line = "gem '#{name}', '~> #{version}'"
+            lines[count] = new_line
+            puts "  ==> Update gem version to #{new_line}"
+            gemfile_modified = true
+          end
+        end
+      end
+      count += 1
+    end
+
+    # install the new gem
+    if !found_gem
+      lines << "gem '#{name}', '~> #{version}'"
+      gemfile_modified = true
+    end
+
+
+    if gemfile_modified
+      puts "  ==> Updating Gemfile...
+    "
+      # Write the lines back to Gemfile
+      begin
+        file = File.open("Gemfile", "w")
+        lines.each do |line|
+          file.write(line) 
+        end
+      rescue IOError => e
+        #some error occur, dir not writable etc.
+      ensure
+        file.close unless file == nil
+      end
+    end
+
+    # Restart Rails server
+    # TBD
+
   end
 end
 
