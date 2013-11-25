@@ -20,3 +20,6 @@
 # Rubymine config
 /.idea
 /.idea/**
+
+
+/gems

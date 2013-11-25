@@ -1,12 +1,13 @@
 class StoragesController < ApplicationController
 
   # PT:: make sure that the user is authenticated.
-  before_filter :authenticate_user! #, :except => :create
+  before_filter :authenticate_user! , :except => :upload
 
   # GET /storages
   # GET /storages.json
   def index
-    @storages = current_user.storages.all
+    page = params[:page] || 1
+    @storages = current_user.storages.page(page)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -117,13 +118,13 @@ class StoragesController < ApplicationController
   # POST /upload.json
   #
   def upload
-    user = User.first
     storage_data = Hash.new
-    storage_data[:file] = params[:file]
-    storage_data[:device_id] = params[:device_id]
+    storage_data[:file]       = params[:file]
+    storage_data[:device_id]  = params[:device_id]
     storage_data[:compressed] = params[:compressed] == 'true'
-    storage_data[:file_type] = params[:file_type]
-    puts "  =====> #{storage_data}"
+    storage_data[:file_type]  = params[:file_type]
+    
+    user = User.find_by_device_id params[:device_id]
     @storage = user.storages.new(storage_data)
 
     respond_to do |format|

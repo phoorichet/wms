@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131120035409) do
+ActiveRecord::Schema.define(:version => 20131124112633) do
 
   create_table "storages", :force => true do |t|
     t.datetime "created_at",                       :null => false
@@ -55,17 +55,15 @@ ActiveRecord::Schema.define(:version => 20131120035409) do
     t.string   "name"
     t.string   "description"
     t.string   "version"
-    t.string   "config_file_path"
-    t.string   "database"
-    t.string   "collection"
     t.datetime "last_run_at"
     t.integer  "run_interval"
     t.boolean  "is_disable"
-    t.string   "url"
+    t.string   "homepage"
     t.integer  "user_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
     t.string   "status"
+    t.string   "class_name"
   end
 
   add_index "widgets", ["user_id"], :name => "index_widgets_on_user_id"

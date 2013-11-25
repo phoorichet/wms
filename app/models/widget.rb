@@ -1,29 +1,25 @@
-require 'wms/namespace'
-require 'wms/config/mixin'
-require 'wms/error'
+require 'wms'
 require 'rbconfig'
 
 class Widget < ActiveRecord::Base
   include Wms::Config::Mixin
 
-  attr_accessible :collection, :config_file_path, :database, :description, 
-                  :is_disable, :last_run_at, :name, :run_interval, 
-                  :url, :user_id, :version, :status
+  attr_accessible :description, :is_disable, :last_run_at, :name, :run_interval, :homepage, :user_id, :version, :status, :class_name
 
   belongs_to :user
-$flag = 0
 
   # This method will list all the widgets that were installed.
   # The method looks up for type
   def self.load_widgets
     self.all.each do |widget|
-      begin
-        # Use the fixed path right now.
-        main_path = "wms/#{widget.config_file_path}/main"
-        logger.debug "Loading widget [#{widget.name} from #{main_path}]"
+      # Load the path for the name
+      main_path = self.name.gsub("-","/")
+      logger.debug "Loading widget [#{widget.name} from #{main_path}]"
       
+      begin
         require main_path
       rescue LoadError => e
+        logger.error e
         raise Wms::PluginLoadingError
       end # end begin
     end # end each
@@ -36,7 +32,7 @@ $flag = 0
       threads << Thread.new do
          begin
            # Convert class name as a string to a ruby class
-           widget_class_str = "Wms::Widget::#{widget.name}"
+           widget_class_str = widget.class_name
            widget_class = widget_class_str.constantize
            widget_instance = widget_class.new
            options = {
@@ -55,30 +51,8 @@ $flag = 0
     end
   end
 
-  def get_analytics
-    Analytic.where(:widget_id => self.id, :user_id => self.user.id)
+  def get_analytics(page)
+    Analytic.where(:widget_id => self.id, :user_id => self.user.id).page(page)
   end
-
-  def run_widget(wid, wname, uid)
-    # Read /widget/ for /widget/widget_name/
-
-    # Read configuration by calling get_config() in main.rb
-
-    # Call run() in main.rb
-
-
-    this_file = File.expand_path("widget/" + wname + "/main.rb")
-    #this_file = File.expand_path("widget/locationwidget/main.rb")
- 
-    ruby = File.join(Config::CONFIG['bindir'], Config::CONFIG['ruby_install_name'])
-    
-    data = `#{ruby} -r#{this_file} -e'get_data'`
-
-
-    #data = main.run()
-
-    #create_analytics(data, wid, wname, uid)
-  end
-
 
 end

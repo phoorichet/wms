@@ -68,4 +68,10 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 # Pagination
 gem 'kaminari'
 
+
 gem 'redis', '2.1.1'
+
+gem 'wms', '~> 0.0.2'
+
+gem 'wms_location1', '~> 0.0.6'
+gem 'wms-widget-timespentlocation', '~> 0.0.2'
