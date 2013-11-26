@@ -1,5 +1,6 @@
 require 'wms/input/android_sensor'
 require 'wms/input/android_wifilocation'
+require 'wms/input/filetype1'
 
 class Storage < ActiveRecord::Base
   # attr_accessible :title, :body
@@ -35,7 +36,7 @@ class Storage < ActiveRecord::Base
 
   # Set the default values
   def set_defaults
-    puts 'call set_defaults!'
+    # puts 'call set_defaults!'
     # Set status to default value
     self.status ||= "uploaded"
     self.last_parsed_line ||= 0
@@ -76,15 +77,20 @@ class Storage < ActiveRecord::Base
       begin
         # Match the proper parser and build options
         case self.file_type
-        when "wifilocation"
-          @parser = Wms::Input::AndroidWifiLocation
-        when "sensor"
-          @parser = Wms::Input::AndroidSensor
-        when "audio"
-          raise "Not Supported yet storage type #{file_type}"
+        when "1"
+          @parser = Wms::Input::Filetype1
         else
           raise "Undefined storage type #{file_type}"
         end
+        # when "wifilocation"
+        #   @parser = Wms::Input::AndroidWifiLocation
+        # when "sensor"
+        #   @parser = Wms::Input::AndroidSensor
+        # when "audio"
+        #   raise "Not Supported yet storage type #{file_type}"
+        # else
+        #   raise "Undefined storage type #{file_type}"
+        # end
 
         @processor = @parser.new
         options = make_options

@@ -9,6 +9,7 @@
         <tr>
           <th>ID</th>
           <th>Timestamp</th>
+          <th>Type</th>
           <th></th>
         </tr>
 
@@ -16,6 +17,7 @@
         <tr>
           <td><%= link_to event.id, event %></td>
           <td><%= event.timestamp %></td>
+          <td><%= event.type %></td>
           <td><%= link_to 'Delete', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>

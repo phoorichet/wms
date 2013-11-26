@@ -114,6 +114,14 @@ class StoragesController < ApplicationController
 
   end
 
+  # GET /storage/parse_all
+  def parse_all
+    @storage = current_user.storages
+    @storage.each do |storage|
+      storage.parse
+    end
+  end
+
   # POST /upload
   # POST /upload.json
   #

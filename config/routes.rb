@@ -30,6 +30,7 @@ Wms::Application.routes.draw do
     collection do
       get 'show_upload'     # show upload files
       post 'upload'         # upload files
+      get 'parse_all'       # parse all the files
     end
   end
 

@@ -37,8 +37,8 @@ class Widget < ActiveRecord::Base
            widget_instance = widget_class.new
            options = {
              :widget => widget,
-             :begin => Time.local(2013, 9, 6),
-             :end => Time.local(2013, 9, 7)
+             # :begin => Time.local(2013, 9, 6),
+             # :end => Time.local(2013, 9, 7)
            }
            widget_instance.register(options)
            widget_instance.run

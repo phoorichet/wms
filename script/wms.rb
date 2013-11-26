@@ -66,7 +66,7 @@ def install_gem(user, name, opt={})
 
     # install the new gem
     if !found_gem
-      lines << "gem '#{name}', '~> #{version}'"
+      lines << "\ngem '#{name}', '~> #{version}'"
       gemfile_modified = true
     end
 
@@ -89,12 +89,18 @@ def install_gem(user, name, opt={})
 
     # Restart Rails server
     # TBD
+    rails_pid = `pgrep -f "rails s"`.split(/\n/).first.to_i
+    Process.kill(9, rails_pid)
+
+    # run bundle install
+    `bundle install`
+    puts "Complete bundle install..."
 
   end
 end
 
 
-user = User.find(ARGV[0].to_i)
+user = User.find_by_device_id(ARGV[0])
 puts user
 if user
   case ARGV[1]
