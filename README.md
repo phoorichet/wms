@@ -10,7 +10,12 @@ brew install imagemagick
 ```
 
 ## Installation
-For the first time installation, run the following command:
+Clone the repo from Github
+```
+git clone git@github.com:phoorichet/wms.git
+```
+
+For the first time installation, run the following command in wms directory:
 ```
 bundle install
 rale db:crate:all
