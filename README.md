@@ -13,13 +13,8 @@ brew install imagemagick
 For the first time installation, run the following command:
 ```
 bundle install
+rale db:crate:all
 rake db:migrate
-```
-
-Nodejs has been used for ruby gem libs. It is required by default.
-For Mac use, use brew.
-```
-brew install node
 ```
 
 
@@ -39,14 +34,9 @@ rake db:mongoid:create_indexes
 #### Installation
 Follow this instruction [MongoDB](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/)
 
-## Note
-Run Elasticsearch
-elasticsearch -f -D es.config=/usr/local/opt/elasticsearch/config/elasticsearch.yml
-
 ## Useful  Links
 1. [Devise](https://github.com/plataformatec/devise)
 2. [Paperclip](https://github.com/thoughtbot/paperclip)
 3. [Homebrew](http://brew.io/)
 
 
-356489052336372

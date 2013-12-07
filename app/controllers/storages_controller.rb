@@ -7,7 +7,7 @@ class StoragesController < ApplicationController
   # GET /storages.json
   def index
     page = params[:page] || 1
-    @storages = current_user.storages.page(page)
+    @storages = current_user.storages.desc.page(page)
 
     respond_to do |format|
       format.html # index.html.erb

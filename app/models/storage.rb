@@ -34,6 +34,8 @@ class Storage < ActiveRecord::Base
   # Calll defaults after an instance get initialized
   after_initialize :set_defaults
 
+  scope :desc, order(:created_at).reverse_order
+
   # Set the default values
   def set_defaults
     # puts 'call set_defaults!'

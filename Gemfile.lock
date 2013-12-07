@@ -153,7 +153,6 @@ GEM
     wms (0.0.4)
     wms-widget-timespentlocation (0.0.3)
     wms-widget-wifissid (0.0.3)
-    wms_location1 (0.0.6)
 
 PLATFORMS
   ruby
@@ -178,4 +177,3 @@ DEPENDENCIES
   wms (~> 0.0.4)
   wms-widget-timespentlocation (~> 0.0.3)
   wms-widget-wifissid (~> 0.0.3)
-  wms_location1 (~> 0.0.6)

@@ -1,7 +1,7 @@
 require 'redis'
 require 'json'
 
-$redis = Redis.new(:host => '192.168.1.133', :port => 6379, :timeout => 0)
+$redis = Redis.new(:host => '10.0.13.68', :port => 6379, :timeout => 0)
 
 machine_id = "356489052336372"
 

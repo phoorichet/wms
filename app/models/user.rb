@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   # Add events method as a getter because Event class is not inherited from ActiveRecord
   def events
-    Event.where(:user_id => self.id)
+    Event.where(:user_id => self.id).order_by(:timestamp => -1)
   end
 
   def find_by_device_id(device_id)
