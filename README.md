@@ -17,22 +17,20 @@ rale db:crate:all
 rake db:migrate
 ```
 
+### MongoDB
+#### Installation
+Follow this instruction [MongoDB](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/)
+
+#### Create index
+```
+rake db:mongoid:create_indexes
+```
 
 ## Run the server
 ```
 rails s
 ```
 
-## Database
-
-### MongoDB
-# Create index
-```
-rake db:mongoid:create_indexes
-```
-
-#### Installation
-Follow this instruction [MongoDB](http://docs.mongodb.org/manual/tutorial/install-mongodb-on-ubuntu/)
 
 ## Useful  Links
 1. [Devise](https://github.com/plataformatec/devise)
